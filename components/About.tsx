@@ -1,27 +1,27 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, Shield, Award, Sparkles } from 'lucide-react'
+import { Stethoscope, GraduationCap, Gem, TrendingUp } from 'lucide-react'
 
 const About = () => {
     const values = [
         {
-            icon: Heart,
+            icon: Stethoscope,
             title: 'Cuidado Personalizado',
             description: 'Cada tratamiento se adapta a tus necesidades específicas y objetivos de belleza.'
         },
         {
-            icon: Shield,
+            icon: GraduationCap,
             title: 'Profesionalidad',
             description: 'Equipo certificado con años de experiencia en estética y belleza.'
         },
         {
-            icon: Award,
+            icon: Gem,
             title: 'Calidad Premium',
             description: 'Utilizamos solo productos de la más alta calidad y tecnología avanzada.'
         },
         {
-            icon: Sparkles,
+            icon: TrendingUp,
             title: 'Resultados Visibles',
             description: 'Tratamientos efectivos que transforman tu apariencia de forma natural.'
         }
@@ -80,7 +80,7 @@ const About = () => {
                     >
                         <div className="relative z-10">
                             <img
-                                src="https://images.unsplash.com/photo-1559591935-c7cc90ccbf92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                src="/images/about/doc.webp"
                                 alt="Equipo de Estética MCMA"
                                 className="w-full h-96 object-cover rounded-2xl shadow-2xl"
                             />

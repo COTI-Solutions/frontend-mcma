@@ -26,7 +26,7 @@ module.exports = {
                     200: '#bbf7d0',
                     300: '#86efac',
                     400: '#4ade80',
-                    500: '#9ADCBE', // Color secundario del logo
+                    500: '#BAEBCC', // Color secundario del logo
                     600: '#8bc5ab',
                     700: '#7cae98',
                     800: '#6d9785',
@@ -46,8 +46,12 @@ module.exports = {
                 }
             },
             fontFamily: {
-                'sans': ['Inter', 'system-ui', 'sans-serif'],
+                'sans': ['Poppins', 'system-ui', 'sans-serif'],
                 'serif': ['Playfair Display', 'serif'],
+                'lora': ['Lora', 'serif'],
+                'display': ['Playfair Display', 'serif'],
+                'body': ['Lora', 'serif'],
+                'ui': ['Poppins', 'system-ui', 'sans-serif'],
             },
             animation: {
                 'fade-in': 'fadeIn 0.5s ease-in-out',

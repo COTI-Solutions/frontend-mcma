@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle } from 'lucide-react'
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -36,8 +36,8 @@ const Contact = () => {
         {
             icon: Phone,
             title: 'Teléfono',
-            content: '+34 123 456 789',
-            href: 'tel:+34123456789',
+            content: '+54 11 3701 7756',
+            href: 'tel:+541137017756',
             description: 'Llámanos para consultas urgentes'
         },
         {
@@ -50,14 +50,14 @@ const Contact = () => {
         {
             icon: MapPin,
             title: 'Dirección',
-            content: 'Calle Principal 123, Madrid',
+            content: '11 de Septiembre 4896, Timbre 3F, Villa Ballester',
             href: '#',
             description: 'Visítanos en nuestro centro'
         },
         {
             icon: Clock,
             title: 'Horarios',
-            content: 'Lun-Vie: 9:00-20:00\nSáb: 9:00-18:00',
+            content: 'Lun-Vie: 9:00-18:00\nSáb: 9:00-12:00',
             href: '#',
             description: 'Cerrado los domingos'
         }
@@ -257,29 +257,36 @@ const Contact = () => {
                             ))}
                         </div>
 
-                        {/* Map Placeholder */}
-                        <div className="bg-gray-200 rounded-xl h-64 flex items-center justify-center">
-                            <div className="text-center text-gray-500">
-                                <MapPin className="w-12 h-12 mx-auto mb-3 text-gray-400" />
-                                <p className="font-medium">Mapa de Ubicación</p>
-                                <p className="text-sm">Integrar con Google Maps</p>
-                            </div>
+                        {/* Google Map */}
+                        <div className="rounded-xl overflow-hidden h-64">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.891619805164!2d-58.562677699999995!3d-34.5562994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb935aa7fe31f%3A0x7acb9feb0040a07d!2sEst%C3%A9tica%20MCMA!5e0!3m2!1ses-419!2sar!4v1755527060826!5m2!1ses-419!2sar"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Ubicación Estética MCMA"
+                            />
                         </div>
 
                         {/* Additional Info */}
                         <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-xl p-6">
                             <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                                ¿Necesitas ayuda urgente?
+                                ¿Necesitas ayuda?
                             </h4>
                             <p className="text-gray-600 mb-4">
-                                Para consultas urgentes o emergencias, puedes contactarnos directamente por teléfono.
+                                Para consultas, puedes contactarnos directamente por WhatsApp.
                             </p>
                             <a
-                                href="tel:+34123456789"
+                                href="https://wa.me/5491137017756?text=Hola%21%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos%20de%20est%C3%A9tica."
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
                             >
-                                <Phone className="w-4 h-4" />
-                                <span>Llamar Ahora</span>
+                                <MessageCircle className="w-4 h-4" />
+                                <span>Escribinos</span>
                             </a>
                         </div>
                     </motion.div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Facebook, Instagram, Twitter, Youtube, Phone, Mail, MapPin, Clock, ArrowUp } from 'lucide-react'
+import { Facebook, Instagram, MessageCircle, Phone, Mail, MapPin, Clock, ArrowUp, Heart, Sparkles, Syringe, Droplets } from 'lucide-react'
 
 const Footer = () => {
     const scrollToTop = () => {
@@ -12,40 +12,66 @@ const Footer = () => {
 
     const footerLinks = {
         servicios: [
-            'Tratamientos Faciales',
-            'Tratamientos Corporales',
-            'Depilación Láser',
-            'Masajes Terapéuticos',
-            'Tratamientos Anti-aging'
+            { name: 'Tratamientos Faciales', href: '#services' },
+            { name: 'Tratamientos Corporales', href: '#services' },
+            { name: 'Depilación Láser', href: '#services' },
+            { name: 'Tratamientos Avanzados', href: '#services' },
+            { name: 'Masajes Terapéuticos', href: '#services' }
         ],
         empresa: [
-            'Sobre Nosotros',
-            'Nuestro Equipo',
-            'Instalaciones',
-            'Certificaciones',
-            'Trabaja con Nosotros'
-        ],
-        recursos: [
-            'Blog de Belleza',
-            'Consejos de Cuidado',
-            'Preguntas Frecuentes',
-            'Política de Privacidad',
-            'Términos y Condiciones'
+            { name: 'Sobre Nosotros', href: '#about' },
+            { name: 'Nuestro Equipo', href: '#about' },
+            { name: 'Instalaciones', href: '#about' },
+            { name: 'Certificaciones', href: '#about' },
+            { name: 'Valores', href: '#about' }
         ],
         contacto: [
-            'Reservar Cita',
-            'Consulta Gratuita',
-            'Ubicación',
-            'Horarios',
-            'Contacto de Emergencia'
+            { name: 'Reservar Cita', href: '#booking' },
+            { name: 'Consulta Gratuita', href: '#booking' },
+            { name: 'Ubicación', href: '#contact' },
+            { name: 'Horarios', href: '#contact' },
+            { name: 'WhatsApp', href: 'https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos.' }
+        ],
+        legal: [
+            { name: 'Política de Privacidad', href: '#' },
+            { name: 'Términos y Condiciones', href: '#' },
+            { name: 'Política de Cookies', href: '#' },
+            { name: 'Aviso Legal', href: '#' },
+            { name: 'RGPD', href: '#' }
         ]
     }
 
     const socialLinks = [
-        { icon: Facebook, href: '#', label: 'Facebook' },
-        { icon: Instagram, href: '#', label: 'Instagram' },
-        { icon: Twitter, href: '#', label: 'Twitter' },
-        { icon: Youtube, href: '#', label: 'Youtube' }
+        { icon: Instagram, href: 'https://instagram.com/estetica.mcma', label: 'Instagram' },
+        { icon: Facebook, href: 'https://facebook.com/esteticamcma', label: 'Facebook' },
+        { icon: MessageCircle, href: 'https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos.', label: 'WhatsApp' }
+    ]
+
+    const contactInfo = [
+        {
+            icon: Phone,
+            text: '+54 11 3701 7756',
+            href: 'https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos.',
+            isLink: true
+        },
+        {
+            icon: Mail,
+            text: 'info@esteticamcma.com',
+            href: 'mailto:info@esteticamcma.com',
+            isLink: true
+        },
+        {
+            icon: MapPin,
+            text: '11 de Septiembre 4896, Timbre 3F, Villa Ballester',
+            href: '#',
+            isLink: false
+        },
+        {
+            icon: Clock,
+            text: 'Lun-Vie: 9:00-18:00, Sáb: 9:00-12:00',
+            href: '#',
+            isLink: false
+        }
     ]
 
     return (
@@ -62,9 +88,11 @@ const Footer = () => {
                         className="lg:col-span-2"
                     >
                         <div className="flex items-center space-x-3 mb-6">
-                            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
-                                <span className="text-white font-bold text-lg">M</span>
-                            </div>
+                            <img
+                                src="/images/logo/logo.png"
+                                alt="Estética MCMA Logo"
+                                className="w-12 h-12 object-contain"
+                            />
                             <span className="text-2xl font-bold">Estética MCMA</span>
                         </div>
 
@@ -76,22 +104,36 @@ const Footer = () => {
 
                         {/* Contact Info */}
                         <div className="space-y-3 mb-6">
-                            <div className="flex items-center space-x-3 text-gray-300">
-                                <Phone className="w-4 h-4 text-primary-400" />
-                                <span>+34 123 456 789</span>
-                            </div>
-                            <div className="flex items-center space-x-3 text-gray-300">
-                                <Mail className="w-4 h-4 text-primary-400" />
-                                <span>info@esteticamcma.com</span>
-                            </div>
-                            <div className="flex items-center space-x-3 text-gray-300">
-                                <MapPin className="w-4 h-4 text-primary-400" />
-                                <span>Calle Principal 123, Madrid</span>
-                            </div>
-                            <div className="flex items-center space-x-3 text-gray-300">
-                                <Clock className="w-4 h-4 text-primary-400" />
-                                <span>Lun-Vie: 9:00-20:00, Sáb: 9:00-18:00</span>
-                            </div>
+                            {contactInfo.map((info, index) => (
+                                info.isLink ? (
+                                    <motion.a
+                                        key={info.text}
+                                        href={info.href}
+                                        target={info.href.startsWith('https://wa.me') ? '_blank' : undefined}
+                                        rel={info.href.startsWith('https://wa.me') ? 'noopener noreferrer' : undefined}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                        viewport={{ once: true }}
+                                        className="flex items-center space-x-3 text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                                    >
+                                        <info.icon className="w-4 h-4 text-primary-400 flex-shrink-0" />
+                                        <span>{info.text}</span>
+                                    </motion.a>
+                                ) : (
+                                    <motion.div
+                                        key={info.text}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                        viewport={{ once: true }}
+                                        className="flex items-center space-x-3 text-gray-300"
+                                    >
+                                        <info.icon className="w-4 h-4 text-primary-400 flex-shrink-0" />
+                                        <span>{info.text}</span>
+                                    </motion.div>
+                                )
+                            ))}
                         </div>
 
                         {/* Social Links */}
@@ -100,6 +142,8 @@ const Footer = () => {
                                 <motion.a
                                     key={social.label}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     initial={{ opacity: 0, scale: 0 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -128,17 +172,19 @@ const Footer = () => {
                             <ul className="space-y-2">
                                 {links.map((link, linkIndex) => (
                                     <motion.li
-                                        key={link}
+                                        key={link.name}
                                         initial={{ opacity: 0, x: -20 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: linkIndex * 0.05 }}
                                         viewport={{ once: true }}
                                     >
                                         <a
-                                            href="#"
+                                            href={link.href}
+                                            target={link.href.startsWith('http') ? '_blank' : undefined}
+                                            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                                             className="text-gray-300 hover:text-primary-400 transition-colors duration-200 text-sm"
                                         >
-                                            {link}
+                                            {link.name}
                                         </a>
                                     </motion.li>
                                 ))}
@@ -148,31 +194,47 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Newsletter Section */}
+            {/* CTA Section */}
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="border-t border-gray-800 py-8"
+                className="border-t border-gray-800 py-12"
             >
                 <div className="container-custom">
                     <div className="text-center">
-                        <h3 className="text-xl font-semibold mb-4">
-                            Suscríbete a nuestro Newsletter
+                        <div className="flex justify-center mb-6">
+                            <div className="flex space-x-2">
+                                <Heart className="w-6 h-6 text-primary-500" />
+                                <Sparkles className="w-6 h-6 text-secondary-500" />
+                                <Syringe className="w-6 h-6 text-primary-500" />
+                                <Droplets className="w-6 h-6 text-secondary-500" />
+                            </div>
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4">
+                            ¿Lista para transformar tu belleza?
                         </h3>
-                        <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                            Recibe consejos de belleza, ofertas especiales y novedades sobre nuestros tratamientos
+                        <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Agenda tu consulta gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos de belleza
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                            <input
-                                type="email"
-                                placeholder="Tu email"
-                                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-white placeholder-gray-400"
-                            />
-                            <button className="btn-primary whitespace-nowrap">
-                                Suscribirse
-                            </button>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a
+                                href="#booking"
+                                className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200"
+                            >
+                                <MessageCircle className="w-4 h-4" />
+                                <span>Agendar Consulta</span>
+                            </a>
+                            <a
+                                href="https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20agendar%20una%20consulta%20gratuita."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200"
+                            >
+                                <MessageCircle className="w-4 h-4" />
+                                <span>WhatsApp Directo</span>
+                            </a>
                         </div>
                     </div>
                 </div>

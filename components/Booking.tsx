@@ -1,25 +1,78 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, Clock, MapPin, Phone, Mail, CheckCircle } from 'lucide-react'
-import { InlineWidget } from 'react-calendly'
+import { MessageCircle, Clock, MapPin, Phone, Mail, CheckCircle, Sparkles, Syringe, Droplets, Scissors, Zap } from 'lucide-react'
+import { useState } from 'react'
 
 const Booking = () => {
-    const benefits = [
-        'Reserva online 24/7',
-        'Confirmación inmediata',
-        'Recordatorios automáticos',
-        'Cancelación gratuita hasta 24h antes',
-        'Múltiples métodos de pago',
-        'Historial de citas'
+    const [selectedService, setSelectedService] = useState('')
+
+    const serviceCategories = [
+        {
+            title: 'Tratamientos Faciales',
+            icon: Sparkles,
+            services: [
+                { name: 'Limpieza Profunda', price: '€45', duration: '60 min' },
+                { name: 'Hidratación Intensa', price: '€55', duration: '75 min' },
+                { name: 'Anti-aging Premium', price: '€75', duration: '90 min' },
+                { name: 'Acné y Problemas', price: '€65', duration: '80 min' }
+            ]
+        },
+        {
+            title: 'Tratamientos Avanzados',
+            icon: Syringe,
+            services: [
+                { name: 'Plasma Rico en Plaquetas', price: '€180', duration: '60 min' },
+                { name: 'Botox Facial', price: '€250', duration: '45 min' },
+                { name: 'Ácido Hialurónico', price: '€200', duration: '60 min' },
+                { name: 'Hilos Tensores', price: '€350', duration: '90 min' }
+            ]
+        },
+        {
+            title: 'Tratamientos Corporales',
+            icon: Droplets,
+            services: [
+                { name: 'Masaje Relajante', price: '€60', duration: '60 min' },
+                { name: 'Drenaje Linfático', price: '€70', duration: '75 min' },
+                { name: 'Reducción Localizada', price: '€80', duration: '90 min' },
+                { name: 'Firming Corporal', price: '€85', duration: '90 min' }
+            ]
+        },
+        {
+            title: 'Depilación y Belleza',
+            icon: Scissors,
+            services: [
+                { name: 'Depilación Láser Piernas', price: '€120', duration: '45 min' },
+                { name: 'Depilación Láser Axilas', price: '€45', duration: '20 min' },
+                { name: 'Depilación Cera Piernas', price: '€35', duration: '30 min' },
+                { name: 'Depilación Cera Axilas', price: '€15', duration: '15 min' }
+            ]
+        },
+        {
+            title: 'Tratamientos Especiales',
+            icon: Zap,
+            services: [
+                { name: 'Radiofrecuencia Facial', price: '€95', duration: '60 min' },
+                { name: 'Ultrasonidos', price: '€85', duration: '75 min' },
+                { name: 'Peeling Químico', price: '€110', duration: '90 min' },
+                { name: 'Mesoterapia', price: '€130', duration: '60 min' }
+            ]
+        }
     ]
 
     const contactInfo = [
-        { icon: Phone, text: '+34 123 456 789', href: 'tel:+34123456789' },
-        { icon: Mail, text: 'info@esteticamcma.com', href: 'mailto:info@esteticamcma.com' },
-        { icon: MapPin, text: 'Calle Principal 123, Madrid', href: '#' },
-        { icon: Clock, text: 'Lun-Vie: 9:00-20:00, Sáb: 9:00-18:00', href: '#' }
+        { icon: Phone, text: '+54 11 3701 7756', href: 'https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos.', isLink: true },
+        { icon: Mail, text: 'info@esteticamcma.com', href: 'mailto:info@esteticamcma.com', isLink: true },
+        { icon: MapPin, text: '11 de Septiembre 4896, Timbre 3F, Villa Ballester', href: '#', isLink: false },
+        { icon: Clock, text: 'Lun-Vie: 9:00-18:00, Sáb: 9:00-12:00', href: '#', isLink: false }
     ]
+
+    const handleServiceSelect = (serviceName: string) => {
+        setSelectedService(serviceName)
+        const message = encodeURIComponent(`Hola! Quisiera saber más sobre el tratamiento de ${serviceName}. ¿Cuándo podría agendar una cita?`)
+        const whatsappUrl = `https://wa.me/5491137017756?text=${message}`
+        window.open(whatsappUrl, '_blank')
+    }
 
     return (
         <section id="booking" className="section-padding bg-gradient-to-br from-primary-50 to-secondary-50">
@@ -33,36 +86,63 @@ const Booking = () => {
                         viewport={{ once: true }}
                     >
                         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                            Reserva tu
+                            Agenda tu
                             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600">
-                                Cita Online
+                                Cita por WhatsApp
                             </span>
                         </h2>
 
                         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                            Reserva tu cita de forma rápida y sencilla. Elige el servicio que deseas,
-                            selecciona la fecha y hora que mejor te convenga, y confirma tu reserva en segundos.
+                            Selecciona el tratamiento que te interesa y consulta directamente por WhatsApp.
+                            Te responderemos rápidamente con la disponibilidad y toda la información que necesites.
                         </p>
 
                         {/* Benefits */}
                         <div className="mb-8">
                             <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                                Ventajas de reservar online:
+                                ¿Por qué consultar por WhatsApp?
                             </h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                {benefits.map((benefit, index) => (
-                                    <motion.div
-                                        key={benefit}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        viewport={{ once: true }}
-                                        className="flex items-center space-x-2"
-                                    >
-                                        <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                        <span className="text-gray-700">{benefit}</span>
-                                    </motion.div>
-                                ))}
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="flex items-center space-x-2"
+                                >
+                                    <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                    <span className="text-gray-700">Respuesta inmediata</span>
+                                </motion.div>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.2 }}
+                                    viewport={{ once: true }}
+                                    className="flex items-center space-x-2"
+                                >
+                                    <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                    <span className="text-gray-700">Consulta de disponibilidad</span>
+                                </motion.div>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.3 }}
+                                    viewport={{ once: true }}
+                                    className="flex items-center space-x-2"
+                                >
+                                    <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                    <span className="text-gray-700">Información personalizada</span>
+                                </motion.div>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.4 }}
+                                    viewport={{ once: true }}
+                                    className="flex items-center space-x-2"
+                                >
+                                    <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                                    <span className="text-gray-700">Reserva directa</span>
+                                </motion.div>
                             </div>
                         </div>
 
@@ -73,18 +153,34 @@ const Booking = () => {
                             </h3>
                             <div className="space-y-3">
                                 {contactInfo.map((info, index) => (
-                                    <motion.a
-                                        key={info.text}
-                                        href={info.href}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                                        viewport={{ once: true }}
-                                        className="flex items-center space-x-3 text-gray-600 hover:text-primary-600 transition-colors duration-200"
-                                    >
-                                        <info.icon className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                                        <span>{info.text}</span>
-                                    </motion.a>
+                                    info.isLink ? (
+                                        <motion.a
+                                            key={info.text}
+                                            href={info.href}
+                                            target={info.href.startsWith('https://wa.me') ? '_blank' : undefined}
+                                            rel={info.href.startsWith('https://wa.me') ? 'noopener noreferrer' : undefined}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                                            viewport={{ once: true }}
+                                            className="flex items-center space-x-3 text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                                        >
+                                            <info.icon className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                                            <span>{info.text}</span>
+                                        </motion.a>
+                                    ) : (
+                                        <motion.div
+                                            key={info.text}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                                            viewport={{ once: true }}
+                                            className="flex items-center space-x-3 text-gray-600"
+                                        >
+                                            <info.icon className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                                            <span>{info.text}</span>
+                                        </motion.div>
+                                    )
                                 ))}
                             </div>
                         </div>
@@ -102,7 +198,7 @@ const Booking = () => {
                         </div>
                     </motion.div>
 
-                    {/* Calendly Widget */}
+                    {/* Service Selector */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -112,51 +208,76 @@ const Booking = () => {
                     >
                         <div className="text-center mb-6">
                             <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Calendar className="w-8 h-8 text-white" />
+                                <MessageCircle className="w-8 h-8 text-white" />
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                                Selecciona tu Cita
+                                Selecciona tu Tratamiento
                             </h3>
                             <p className="text-gray-600">
-                                Elige el servicio y horario que prefieras
+                                Elige el servicio que te interesa y consulta por WhatsApp
                             </p>
                         </div>
 
-                        {/* Calendly Inline Widget */}
-                        <div className="calendly-inline-widget" data-url="https://calendly.com/your-calendly-url" style={{ minWidth: '320px', height: '700px' }}>
-                            <InlineWidget
-                                url="https://calendly.com/your-calendly-url"
-                                styles={{
-                                    height: '700px',
-                                    width: '100%',
-                                }}
-                                pageSettings={{
-                                    backgroundColor: 'ffffff',
-                                    hideEventTypeDetails: false,
-                                    hideLandingPageDetails: false,
-                                    primaryColor: 'ec4899',
-                                    textColor: '1f2937'
-                                }}
-                                prefill={{
-                                    email: '',
-                                    firstName: '',
-                                    lastName: '',
-                                    name: '',
-                                }}
-                            />
+                        {/* Service Categories */}
+                        <div className="space-y-6 max-h-96 overflow-y-auto">
+                            {serviceCategories.map((category, categoryIndex) => (
+                                <motion.div
+                                    key={category.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="border border-gray-200 rounded-xl p-4"
+                                >
+                                    <div className="flex items-center mb-3">
+                                        <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mr-3">
+                                            <category.icon className="w-4 h-4 text-white" />
+                                        </div>
+                                        <h4 className="text-lg font-semibold text-gray-900">{category.title}</h4>
+                                    </div>
+
+                                    <div className="grid gap-2">
+                                        {category.services.map((service, serviceIndex) => (
+                                            <motion.button
+                                                key={service.name}
+                                                onClick={() => handleServiceSelect(service.name)}
+                                                initial={{ opacity: 0, x: -10 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                transition={{ duration: 0.4, delay: (categoryIndex * 0.1) + (serviceIndex * 0.05) }}
+                                                viewport={{ once: true }}
+                                                className="text-left p-3 rounded-lg border border-gray-200 hover:border-primary-300 hover:bg-primary-50 transition-all duration-200 group"
+                                            >
+                                                <div className="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 className="font-medium text-gray-900 group-hover:text-primary-700 transition-colors">
+                                                            {service.name}
+                                                        </h5>
+                                                        <p className="text-sm text-gray-500">
+                                                            {service.duration} • {service.price}
+                                                        </p>
+                                                    </div>
+                                                    <MessageCircle className="w-4 h-4 text-gray-400 group-hover:text-primary-600 transition-colors" />
+                                                </div>
+                                            </motion.button>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            ))}
                         </div>
 
-                        {/* Alternative Booking */}
+                        {/* Direct WhatsApp Button */}
                         <div className="mt-6 text-center">
                             <p className="text-sm text-gray-500 mb-3">
-                                ¿Prefieres reservar por teléfono?
+                                ¿No encuentras el tratamiento que buscas?
                             </p>
                             <a
-                                href="tel:+34123456789"
+                                href="https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20consultar%20sobre%20otros%20tratamientos%20disponibles."
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
                             >
-                                <Phone className="w-4 h-4" />
-                                <span>Llamar Ahora</span>
+                                <MessageCircle className="w-4 h-4" />
+                                <span>Consultar Otros Tratamientos</span>
                             </a>
                         </div>
                     </motion.div>
@@ -175,18 +296,18 @@ const Booking = () => {
                             Preguntas Frecuentes
                         </h3>
                         <p className="text-lg text-gray-600">
-                            Resolvemos las dudas más comunes sobre nuestras reservas
+                            Resolvemos las dudas más comunes sobre nuestros tratamientos
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         <div className="bg-white rounded-xl p-6 shadow-lg">
                             <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                                ¿Puedo cancelar mi cita?
+                                ¿Cuánto tiempo dura la consulta?
                             </h4>
                             <p className="text-gray-600">
-                                Sí, puedes cancelar tu cita hasta 24 horas antes sin ningún cargo.
-                                Después de ese tiempo, se aplicará una tarifa de cancelación.
+                                La primera consulta incluye una evaluación completa y suele durar
+                                entre 30-45 minutos, dependiendo del servicio.
                             </p>
                         </div>
 
@@ -202,11 +323,11 @@ const Booking = () => {
 
                         <div className="bg-white rounded-xl p-6 shadow-lg">
                             <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                                ¿Cuánto dura la primera consulta?
+                                ¿Puedo cancelar mi cita?
                             </h4>
                             <p className="text-gray-600">
-                                La primera consulta incluye una evaluación completa y suele durar
-                                entre 30-45 minutos, dependiendo del servicio.
+                                Sí, puedes cancelar tu cita hasta 24 horas antes sin ningún cargo.
+                                Después de ese tiempo, se aplicará una tarifa de cancelación.
                             </p>
                         </div>
 

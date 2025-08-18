@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 @layer base {
     html {
@@ -10,16 +10,28 @@
     }
 
     body {
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: 'Lora', serif;
     }
 
     h1,
-    h2,
+    h2 {
+        font-family: 'Playfair Display', serif;
+    }
+
     h3,
     h4,
     h5,
     h6 {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Lora', serif;
+    }
+
+    button,
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline,
+    nav,
+    .nav-link {
+        font-family: 'Poppins', system-ui, sans-serif;
     }
 }
 
@@ -42,6 +54,18 @@
 
     .container-custom {
         @apply max-w-7xl mx-auto;
+    }
+
+    .font-display {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .font-body {
+        font-family: 'Lora', serif;
+    }
+
+    .font-ui {
+        font-family: 'Poppins', system-ui, sans-serif;
     }
 
     /* Hero section full width */
