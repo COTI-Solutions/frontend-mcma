@@ -79,7 +79,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto mb-20 md:mb-16"
                     >
                         <div className="flex flex-col items-center">
                             <div className="flex items-center mb-2">
