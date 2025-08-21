@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Lora', serif;
+    }
+
+    h1,
+    h2 {
+        font-family: 'Playfair Display', serif;
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Lora', serif;
+    }
+
+    button,
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline,
+    nav,
+    .nav-link {
+        font-family: 'Poppins', system-ui, sans-serif;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+    }
+
+    .btn-secondary {
+        @apply bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+    }
+
+    .btn-outline {
+        @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105;
+    }
+
+    .section-padding {
+        @apply py-16 px-4 sm:px-6 lg:px-8;
+    }
+
+    .container-custom {
+        @apply max-w-7xl mx-auto;
+    }
+
+    .font-display {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .font-body {
+        font-family: 'Lora', serif;
+    }
+
+    .font-ui {
+        font-family: 'Poppins', system-ui, sans-serif;
+    }
+
+    /* Hero section full width */
+    #hero {
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        left: 0;
+        right: 0;
+    }
+}
