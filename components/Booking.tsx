@@ -1,64 +1,21 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MessageCircle, Clock, MapPin, Phone, Mail, CheckCircle, Sparkles, Syringe, Droplets, Scissors, Zap } from 'lucide-react'
+import { MessageCircle, Clock, MapPin, Phone, Mail, CheckCircle } from 'lucide-react'
 import { useState } from 'react'
+import { serviceCategories } from '@/config/services'
 
 const Booking = () => {
     const [selectedService, setSelectedService] = useState('')
 
-    const serviceCategories = [
-        {
-            title: 'Tratamientos Faciales',
-            icon: Sparkles,
-            services: [
-                { name: 'Limpieza Profunda', price: '€45', duration: '60 min' },
-                { name: 'Hidratación Intensa', price: '€55', duration: '75 min' },
-                { name: 'Anti-aging Premium', price: '€75', duration: '90 min' },
-                { name: 'Acné y Problemas', price: '€65', duration: '80 min' }
-            ]
-        },
-        {
-            title: 'Tratamientos Avanzados',
-            icon: Syringe,
-            services: [
-                { name: 'Plasma Rico en Plaquetas', price: '€180', duration: '60 min' },
-                { name: 'Botox Facial', price: '€250', duration: '45 min' },
-                { name: 'Ácido Hialurónico', price: '€200', duration: '60 min' },
-                { name: 'Hilos Tensores', price: '€350', duration: '90 min' }
-            ]
-        },
-        {
-            title: 'Tratamientos Corporales',
-            icon: Droplets,
-            services: [
-                { name: 'Masaje Relajante', price: '€60', duration: '60 min' },
-                { name: 'Drenaje Linfático', price: '€70', duration: '75 min' },
-                { name: 'Reducción Localizada', price: '€80', duration: '90 min' },
-                { name: 'Firming Corporal', price: '€85', duration: '90 min' }
-            ]
-        },
-        {
-            title: 'Depilación y Belleza',
-            icon: Scissors,
-            services: [
-                { name: 'Depilación Láser Piernas', price: '€120', duration: '45 min' },
-                { name: 'Depilación Láser Axilas', price: '€45', duration: '20 min' },
-                { name: 'Depilación Cera Piernas', price: '€35', duration: '30 min' },
-                { name: 'Depilación Cera Axilas', price: '€15', duration: '15 min' }
-            ]
-        },
-        {
-            title: 'Tratamientos Especiales',
-            icon: Zap,
-            services: [
-                { name: 'Radiofrecuencia Facial', price: '€95', duration: '60 min' },
-                { name: 'Ultrasonidos', price: '€85', duration: '75 min' },
-                { name: 'Peeling Químico', price: '€110', duration: '90 min' },
-                { name: 'Mesoterapia', price: '€130', duration: '60 min' }
-            ]
-        }
-    ]
+    // Transformar los servicios para incluir el campo 'price' que necesita Booking
+    const bookingServiceCategories = serviceCategories.map(category => ({
+        ...category,
+        services: category.services.map(service => ({
+            ...service,
+            price: 'Consultar'
+        }))
+    }))
 
     const contactInfo = [
         { icon: Phone, text: '+54 11 3701 7756', href: 'https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos.', isLink: true },
@@ -220,7 +177,7 @@ const Booking = () => {
 
                         {/* Service Categories */}
                         <div className="space-y-6 max-h-96 overflow-y-auto">
-                            {serviceCategories.map((category, categoryIndex) => (
+                            {bookingServiceCategories.map((category, categoryIndex) => (
                                 <motion.div
                                     key={category.title}
                                     initial={{ opacity: 0, y: 20 }}
@@ -336,9 +293,29 @@ const Booking = () => {
                                 ¿Aceptan seguros médicos?
                             </h4>
                             <p className="text-gray-600">
-                                Trabajamos con varios seguros médicos. Contacta con nosotros
-                                para verificar la cobertura de tu póliza.
+                                No trabajamos con seguros médicos. Todos nuestros tratamientos
+                                son de pago particular.
                             </p>
+                        </div>
+                    </div>
+
+                    {/* Contacto adicional separado */}
+                    <div className="mt-12 text-center">
+                        <div className="bg-white rounded-xl p-8 shadow-lg max-w-2xl mx-auto">
+                            <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                                ¿No encontraste tu respuesta?
+                            </h4>
+                            <p className="text-gray-600 mb-6">
+                                Si tenes alguna otra pregunta o necesitas más información,
+                                no dudes en contactarnos directamente.
+                            </p>
+                            <a
+                                href="/contact"
+                                className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-medium transition-colors duration-200 text-lg"
+                            >
+                                <MessageCircle className="w-5 h-5" />
+                                <span>Escribinos</span>
+                            </a>
                         </div>
                     </div>
                 </motion.div>

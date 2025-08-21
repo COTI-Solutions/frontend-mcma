@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
     title: 'Estética MCMA - Belleza y Bienestar',
@@ -21,7 +23,9 @@ export default function RootLayout({
     return (
         <html lang="es">
             <body className="antialiased">
+                <Navbar />
                 {children}
+                <Footer />
             </body>
         </html>
     )

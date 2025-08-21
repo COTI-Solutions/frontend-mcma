@@ -72,27 +72,8 @@ const Contact = () => {
     ]
 
     return (
-        <section id="contact" className="section-padding bg-white">
+        <section className="section-padding bg-white">
             <div className="container-custom">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                        Ponte en
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600">
-                            Contacto
-                        </span>
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Estamos aquí para ayudarte. Contáctanos para cualquier consulta,
-                        reserva o información sobre nuestros servicios.
-                    </p>
-                </motion.div>
 
                 <div className="grid lg:grid-cols-2 gap-16">
                     {/* Contact Form */}

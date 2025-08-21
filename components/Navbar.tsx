@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Phone, MapPin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const pathname = usePathname()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,13 +23,25 @@ const Navbar = () => {
         { name: 'Nosotros', href: '#about' },
         { name: 'Servicios', href: '#services' },
         { name: 'Reservas', href: '#booking' },
-        { name: 'Contacto', href: '#contact' },
+        { name: 'Contacto', href: '/contact' },
     ]
 
     const scrollToSection = (href: string) => {
-        const element = document.querySelector(href)
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
+        if (href.startsWith('#')) {
+            // Enlace interno
+            if (pathname === '/contact') {
+                // Si estamos en la página de contacto, ir a la página principal con hash
+                window.location.href = `/${href}`
+            } else {
+                // Si estamos en la página principal, hacer scroll
+                const element = document.querySelector(href)
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                }
+            }
+        } else {
+            // Enlace a página - navegar
+            window.location.href = href
         }
         setIsOpen(false)
     }

@@ -47,7 +47,7 @@ const About = () => {
 
                         <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                             Somos un centro de estética comprometido con tu belleza y bienestar.
-                            Desde 2019, hemos estado ayudando a nuestros clientes a sentirse
+                            Desde 2019, hemos estado ayudando a nuestros pacientes a sentirse
                             más seguros y radiantes con tratamientos personalizados y tecnología de vanguardia.
                         </p>
 

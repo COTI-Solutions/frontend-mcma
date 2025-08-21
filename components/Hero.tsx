@@ -93,7 +93,7 @@ const Hero = () => {
                                 <Users className="w-6 h-6 text-primary-400 mr-2" />
                                 <span className="text-3xl font-bold">500+</span>
                             </div>
-                            <p className="text-gray-300">Clientes Satisfechos</p>
+                            <p className="text-gray-300">Pacientes Satisfechos</p>
                         </div>
                         <div className="flex flex-col items-center">
                             <div className="flex items-center mb-2">
