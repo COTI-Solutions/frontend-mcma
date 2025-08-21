@@ -23,6 +23,7 @@ const Navbar = () => {
         { name: 'Nosotros', href: '#about' },
         { name: 'Servicios', href: '#services' },
         { name: 'Reservas', href: '#booking' },
+        { name: 'FAQ', href: '#faq' },
         { name: 'Contacto', href: '/contact' },
     ]
 
