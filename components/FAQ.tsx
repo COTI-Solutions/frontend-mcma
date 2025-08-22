@@ -15,7 +15,7 @@ const FAQ = () => {
         },
         {
             question: '¿Puedo cancelar mi cita?',
-            answer: 'Sí, puedes cancelar tu cita hasta 24 horas antes sin ningún cargo. Después de ese tiempo, se aplicará una tarifa de cancelación.'
+            answer: 'Sí, podes cancelar tu cita hasta 24 horas antes sin ningún cargo. Después de ese tiempo, se aplicará una tarifa de cancelación.'
         },
         {
             question: '¿Aceptan seguros médicos?',
