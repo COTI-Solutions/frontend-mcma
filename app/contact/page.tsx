@@ -17,6 +17,7 @@ export default function ContactPage() {
                 </div>
             </div>
 
+
             {/* Componente de Contacto */}
             <Contact />
         </main>

@@ -19,7 +19,7 @@ const Booking = () => {
 
     const contactInfo = [
         { icon: Phone, text: '+54 11 3701 7756', href: 'https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos.', isLink: true },
-        { icon: Mail, text: 'info@esteticamcma.com', href: 'mailto:info@esteticamcma.com', isLink: true },
+        { icon: Mail, text: 'esteticamcma@gmail.com', href: 'mailto:esteticamcma@gmail.com', isLink: true },
         { icon: MapPin, text: '11 de Septiembre 4896, Timbre 3F, Villa Ballester', href: '#', isLink: false },
         { icon: Clock, text: 'Lun-Vie: 9:00-18:00, Sáb: 9:00-12:00', href: '#', isLink: false }
     ]
@@ -237,7 +237,7 @@ const Booking = () => {
                             {/* Direct WhatsApp Button */}
                             <div className="mt-6 text-center">
                                 <p className="text-sm text-gray-500 mb-3">
-                                    ¿No encuentras el tratamiento que buscas?
+                                    ¿No encontras el tratamiento que buscas?
                                 </p>
                                 <a
                                     href="https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20consultar%20sobre%20otros%20tratamientos%20disponibles."

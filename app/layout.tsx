@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
     width: 'device-width',
     initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
 }
 
 export default function RootLayout({
@@ -22,7 +24,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="es">
-            <body className="antialiased">
+            <body className="antialiased overflow-x-hidden">
                 <Navbar />
                 {children}
                 <Footer />
