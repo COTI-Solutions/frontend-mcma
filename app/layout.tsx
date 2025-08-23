@@ -1,20 +1,11 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-    title: 'Estética MCMA - Belleza y Bienestar',
-    description: 'Centro de estética profesional especializado en tratamientos faciales, corporales y de belleza. Reserva tu cita online.',
-    keywords: 'estética, belleza, tratamientos faciales, corporales, spa, reservas online',
-    authors: [{ name: 'Estética MCMA' }],
-}
-
-export const viewport: Viewport = {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
+    title: 'Estética MCMA',
+    description: 'Centro de estética profesional en Villa Ballester',
 }
 
 export default function RootLayout({

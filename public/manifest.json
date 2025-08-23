@@ -1,0 +1,177 @@
+{
+    "name": "Estética MCMA - Centro de Belleza Profesional",
+    "short_name": "Estética MCMA",
+    "description": "Centro de estética profesional en Villa Ballester. Especialistas en tratamientos faciales, corporales y medicina estética.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#BAEBCC",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "es-AR",
+    "dir": "ltr",
+    "categories": [
+        "health",
+        "beauty",
+        "medical",
+        "lifestyle"
+    ],
+    "icons": [
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/images/logo/logo.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/images/hero/estetica-mcma-1058556.webp",
+            "sizes": "1280x720",
+            "type": "image/webp",
+            "form_factor": "wide",
+            "label": "Página principal de Estética MCMA"
+        },
+        {
+            "src": "/images/about/portada.webp",
+            "sizes": "750x1334",
+            "type": "image/webp",
+            "form_factor": "narrow",
+            "label": "Sobre nosotros - Estética MCMA"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Reservar Cita",
+            "short_name": "Reservar",
+            "description": "Reserva tu cita online",
+            "url": "/#booking",
+            "icons": [
+                {
+                    "src": "/images/logo/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Contacto WhatsApp",
+            "short_name": "WhatsApp",
+            "description": "Contacta por WhatsApp",
+            "url": "https://wa.me/5491137017756",
+            "icons": [
+                {
+                    "src": "/images/logo/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Nuestros Servicios",
+            "short_name": "Servicios",
+            "description": "Ver todos los servicios",
+            "url": "/#services",
+            "icons": [
+                {
+                    "src": "/images/logo/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "webapp",
+            "url": "https://esteticamcma.com"
+        }
+    ],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    },
+    "handle_links": "preferred",
+    "protocol_handlers": [
+        {
+            "protocol": "web+estetica",
+            "url": "/?service=%s"
+        }
+    ],
+    "file_handlers": [
+        {
+            "action": "/",
+            "accept": {
+                "image/*": [
+                    ".jpg",
+                    ".jpeg",
+                    ".png",
+                    ".webp"
+                ]
+            }
+        }
+    ],
+    "share_target": {
+        "action": "/",
+        "method": "GET",
+        "params": {
+            "title": "title",
+            "text": "text",
+            "url": "url"
+        }
+    },
+    "permissions": [
+        "geolocation"
+    ],
+    "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=com.esteticamcma.app",
+            "id": "com.esteticamcma.app"
+        }
+    ],
+    "prefer_related_applications": false
+}

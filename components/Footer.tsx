@@ -289,6 +289,18 @@ const Footer = () => {
                             </button>
                         </div>
                     </div>
+
+                    {/* Developer Credit */}
+                    <div className="flex flex-col items-center justify-center mt-4 pt-4 border-t border-gray-800">
+                        <div className="flex items-center space-x-2 text-gray-400 text-xs md:text-sm mb-3 md:mb-0">
+                            <span className="hover:text-primary-400 transition-colors duration-200">Desarrollado por</span>
+                            <img
+                                src="/images/logo/Coti_Solutions.webp"
+                                alt="Coti Solutions Logo"
+                                className="h-6 w-auto opacity-80 hover:opacity-100 transition-opacity duration-200"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
 

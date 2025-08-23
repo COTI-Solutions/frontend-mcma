@@ -115,14 +115,20 @@ const Navbar = () => {
                             href="https://wa.me/5491137017756?text=Hola%21%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos%20de%20est%C3%A9tica."
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center space-x-2 text-xs xl:text-sm text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                            className={`flex items-center space-x-2 text-xs xl:text-sm transition-colors duration-200 ${scrollProgress > 0.1
+                                ? 'text-gray-600 hover:text-primary-600'
+                                : 'text-[#BAEBCC] hover:text-white'
+                                }`}
                         >
-                            <Phone className="w-3 h-3 xl:w-4 xl:h-4" />
+                            <Phone className={`w-3 h-3 xl:w-4 xl:h-4 transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-gray-600' : 'text-[#BAEBCC]'
+                                }`} />
                             <span className="hidden xl:inline">+54 11 3701 7756</span>
                             <span className="xl:hidden">+54 11 3701 7756</span>
                         </a>
-                        <div className="flex items-center space-x-2 text-xs xl:text-sm text-gray-600">
-                            <MapPin className="w-3 h-3 xl:w-4 xl:h-4" />
+                        <div className={`flex items-center space-x-2 text-xs xl:text-sm transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-gray-600' : 'text-[#BAEBCC]'
+                            }`}>
+                            <MapPin className={`w-3 h-3 xl:w-4 xl:h-4 transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-gray-600' : 'text-[#BAEBCC]'
+                                }`} />
                             <span className="hidden xl:inline">Buenos Aires, Argentina</span>
                             <span className="xl:hidden">BA, Argentina</span>
                         </div>
@@ -134,7 +140,12 @@ const Navbar = () => {
                         className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 bg-white/20 backdrop-blur-sm"
                         aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
                     >
-                        {isOpen ? <X className="w-5 h-5 text-gray-700" /> : <Menu className="w-5 h-5 text-white" />}
+                        {isOpen ? (
+                            <X className="w-5 h-5 text-gray-700" />
+                        ) : (
+                            <Menu className={`w-5 h-5 transition-colors duration-300 ${scrollProgress > 0.1 ? 'text-gray-700' : 'text-white'
+                                }`} />
+                        )}
                     </button>
                 </div>
 
