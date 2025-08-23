@@ -1,0 +1,64 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://esteticamcma.com/sitemap.xml
+
+# Crawl-delay para evitar sobrecargar el servidor
+Crawl-delay: 1
+
+# Permitir acceso a recursos importantes
+Allow: /images/
+Allow: /components/
+Allow: /config/
+
+# Bloquear acceso a archivos de configuración
+Disallow: /next.config.js
+Disallow: /tailwind.config.js
+Disallow: /tsconfig.json
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Bloquear acceso a archivos de desarrollo
+Disallow: /.git/
+Disallow: /.env
+Disallow: /.env.local
+Disallow: /node_modules/
+
+# Permitir acceso a páginas principales
+Allow: /
+Allow: /contact
+Allow: /about
+Allow: /services
+Allow: /booking
+Allow: /faq
+
+# Optimización para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0.5
+
+# Optimización para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Optimización para Facebook
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 1
+
+# Optimización para Twitter
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 1
+
+# Optimización para LinkedIn
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 1
+
+# Optimización para WhatsApp
+User-agent: WhatsApp
+Allow: /
+Crawl-delay: 1
