@@ -112,35 +112,18 @@ const nextConfig = {
         ]
     },
 
-    // Configuración experimental para performance
+    // Configuración experimental simplificada
     experimental: {
-        optimizeCss: true,
-        optimizePackageImports: ['lucide-react'],
+        optimizeCss: false, // Deshabilitamos para evitar problemas con critters
     },
 
-    // Configuración de webpack para optimización
+    // Configuración de webpack simplificada
     webpack: (config, { dev, isServer }) => {
         // Optimización para producción
         if (!dev && !isServer) {
             config.optimization.splitChunks.chunks = 'all';
             config.optimization.minimize = true;
         }
-
-        // Configuración para imágenes
-        config.module.rules.push({
-            test: /\.(png|jpe?g|gif|svg|webp)$/i,
-            use: [
-                {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8192,
-                        fallback: 'file-loader',
-                        publicPath: '/_next/static/images/',
-                        outputPath: 'static/images/',
-                    },
-                },
-            ],
-        });
 
         return config;
     },
