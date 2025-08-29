@@ -1,64 +1,62 @@
+# Robots.txt para Estética MCMA
+# Centro de Belleza Profesional en Villa Ballester, Buenos Aires
+
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://esteticamcma.com/sitemap.xml
-
-# Crawl-delay para evitar sobrecargar el servidor
-Crawl-delay: 1
-
 # Permitir acceso a recursos importantes
 Allow: /images/
-Allow: /components/
-Allow: /config/
+Allow: /favicon/
+Allow: /css/
+Allow: /js/
 
-# Bloquear acceso a archivos de configuración
-Disallow: /next.config.js
-Disallow: /tailwind.config.js
-Disallow: /tsconfig.json
-Disallow: /package.json
-Disallow: /package-lock.json
-
-# Bloquear acceso a archivos de desarrollo
-Disallow: /.git/
-Disallow: /.env
-Disallow: /.env.local
-Disallow: /node_modules/
-
-# Permitir acceso a páginas principales
+# Páginas principales
 Allow: /
 Allow: /contact
-Allow: /about
-Allow: /services
-Allow: /booking
-Allow: /faq
 
-# Optimización para Googlebot
+# Sitemap
+Sitemap: https://esteticamcma.com.ar/sitemap.xml
+
+# Crawl-delay para ser respetuoso con el servidor
+Crawl-delay: 1
+
+# Reglas específicas para Google
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 0.5
+Crawl-delay: 1
 
-# Optimización para Bingbot
+# Reglas para Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Optimización para Facebook
-User-agent: facebookexternalhit
+# Reglas para otros bots importantes
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 1
 
-# Optimización para Twitter
-User-agent: Twitterbot
-Allow: /
-Crawl-delay: 1
+# Bloquear bots maliciosos
+User-agent: AhrefsBot
+Disallow: /
 
-# Optimización para LinkedIn
-User-agent: LinkedInBot
-Allow: /
-Crawl-delay: 1
+User-agent: SemrushBot
+Disallow: /
 
-# Optimización para WhatsApp
-User-agent: WhatsApp
-Allow: /
-Crawl-delay: 1
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Bloquear acceso a archivos sensibles
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /_next/
+Disallow: /node_modules/
