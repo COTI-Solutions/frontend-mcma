@@ -144,7 +144,7 @@ export const metadata: Metadata = {
         siteName: 'Estética MCMA',
         images: [
             {
-                url: '/images/logo/Logo.webp',
+                url: '/images/logo/logo1.png',
                 width: 1200,
                 height: 630,
                 alt: 'Centro de Estética MCMA - Tratamientos Profesionales en Villa Ballester, Buenos Aires, Argentina',
@@ -155,7 +155,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Estética MCMA - Centro de Belleza Profesional en Villa Ballester, Buenos Aires',
         description: 'Centro de estética profesional en Villa Ballester, Buenos Aires, Argentina. Especialistas en tratamientos faciales, corporales, medicina estética y cirugías plásticas.',
-        images: ['/images/logo/Logo.webp'],
+        images: ['/images/logo/logo1.png'],
         creator: '@esteticamcma',
     },
     robots: {
