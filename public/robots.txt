@@ -8,6 +8,7 @@ Allow: /images/
 Allow: /favicon/
 Allow: /contact
 Allow: /sitemap.xml
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
@@ -23,6 +24,7 @@ Allow: /images/
 Allow: /favicon/
 Allow: /contact
 Allow: /sitemap.xml
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
@@ -37,6 +39,7 @@ Allow: /images/
 Allow: /favicon/
 Allow: /contact
 Allow: /sitemap.xml
+Allow: /_next/static/
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
