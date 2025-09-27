@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { getAllServices } from '@/config/services'
 
+export const dynamic = 'force-dynamic'
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://esteticamcma.com.ar'
     const currentDate = new Date()
