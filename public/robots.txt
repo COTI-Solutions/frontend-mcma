@@ -7,11 +7,11 @@ Allow: /
 Allow: /images/
 Allow: /favicon/
 Allow: /contact
+Allow: /sitemap.xml
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
-Disallow: /*.xml$
 Disallow: /_next/
 Disallow: /node_modules/
 Crawl-delay: 1
@@ -22,11 +22,11 @@ Allow: /
 Allow: /images/
 Allow: /favicon/
 Allow: /contact
+Allow: /sitemap.xml
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
-Disallow: /*.xml$
 Disallow: /_next/
 Disallow: /node_modules/
 
@@ -36,11 +36,11 @@ Allow: /
 Allow: /images/
 Allow: /favicon/
 Allow: /contact
+Allow: /sitemap.xml
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
-Disallow: /*.xml$
 Disallow: /_next/
 Disallow: /node_modules/
 
