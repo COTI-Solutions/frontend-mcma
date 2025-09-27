@@ -11,11 +11,11 @@ const FAQ = () => {
         },
         {
             question: '¿Qué necesito llevar?',
-            answer: 'Solo necesitas venir con ropa cómoda. Nosotros te proporcionamos todo el material necesario para tu tratamiento.'
+            answer: 'Solo necesitás venir con ropa cómoda. Nosotros te proporcionamos todo el material necesario para tu tratamiento.'
         },
         {
             question: '¿Puedo cancelar mi cita?',
-            answer: 'Sí, podes cancelar tu cita hasta 24 horas antes sin ningún cargo. Después de ese tiempo, se aplicará una tarifa de cancelación.'
+            answer: 'Sí, podés cancelar tu cita hasta 24 horas antes sin ningún cargo. Después de ese tiempo, se aplicará una tarifa de cancelación.'
         },
         {
             question: '¿Aceptan seguros médicos?',
@@ -79,7 +79,7 @@ const FAQ = () => {
                             ¿No encontraste tu respuesta?
                         </h4>
                         <p className="text-gray-600 mb-6">
-                            Si tenés alguna otra pregunta o necesitas más información,
+                            Si tenés alguna otra pregunta o necesitás más información,
                             no dudes en contactarnos directamente.
                         </p>
                         <a

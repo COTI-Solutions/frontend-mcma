@@ -51,7 +51,7 @@ const Hero = () => {
                     >
                         Tratamientos avanzados de estética: Plasma Rico en Plaquetas, Botox y Ácido Hialurónico.
                         <br className="hidden md:block" />
-                        Reserva tu cita y transforma tu apariencia con tecnología de vanguardia.
+                        Reservá tu cita y transformá tu apariencia con tecnología de vanguardia.
                     </motion.p>
 
                     <motion.div

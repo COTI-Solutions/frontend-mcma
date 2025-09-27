@@ -62,7 +62,7 @@ const Booking = () => {
                             </h2>
 
                             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                Selecciona el tratamiento que te interesa y consulta directamente por WhatsApp.
+                                Seleccioná el tratamiento que te interesa y consultá directamente por WhatsApp.
                                 Te responderemos rápidamente con la disponibilidad y toda la información que necesites.
                             </p>
 
@@ -180,10 +180,10 @@ const Booking = () => {
                                     <MessageCircle className="w-8 h-8 text-white" />
                                 </div>
                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                                    Selecciona tu Tratamiento
+                                    Seleccioná tu Tratamiento
                                 </h3>
                                 <p className="text-gray-600">
-                                    Elige el servicio que te interesa y consulta por WhatsApp
+                                    Elegí el servicio que te interesa y consultá por WhatsApp
                                 </p>
                             </div>
 
@@ -237,7 +237,7 @@ const Booking = () => {
                             {/* Direct WhatsApp Button */}
                             <div className="mt-6 text-center">
                                 <p className="text-sm text-gray-500 mb-3">
-                                    ¿No encontras el tratamiento que buscas?
+                                    ¿No encontrás el tratamiento que buscás?
                                 </p>
                                 <a
                                     href="https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20consultar%20sobre%20otros%20tratamientos%20disponibles."
