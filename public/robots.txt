@@ -1,43 +1,48 @@
 # Robots.txt para Estética MCMA
 # Centro de Belleza Profesional en Villa Ballester, Buenos Aires
 
+# Reglas generales para todos los bots
 User-agent: *
 Allow: /
-
-# Permitir acceso a recursos importantes
 Allow: /images/
 Allow: /favicon/
-Allow: /css/
-Allow: /js/
-
-# Páginas principales
-Allow: /
 Allow: /contact
-
-# Sitemap
-Sitemap: https://esteticamcma.com.ar/sitemap.xml
-
-# Crawl-delay para ser respetuoso con el servidor
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /_next/
+Disallow: /node_modules/
 Crawl-delay: 1
 
-# Reglas específicas para Google
+# Reglas específicas para Googlebot
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
+Allow: /images/
+Allow: /favicon/
+Allow: /contact
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /_next/
+Disallow: /node_modules/
 
-# Reglas para Bing
+# Reglas específicas para Bingbot
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
-
-# Reglas para otros bots importantes
-User-agent: Slurp
-Allow: /
-Crawl-delay: 2
-
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 1
+Allow: /images/
+Allow: /favicon/
+Allow: /contact
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /_next/
+Disallow: /node_modules/
 
 # Bloquear bots maliciosos
 User-agent: AhrefsBot
@@ -52,11 +57,5 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# Bloquear acceso a archivos sensibles
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-Disallow: /*.xml$
-Disallow: /_next/
-Disallow: /node_modules/
+# Sitemap
+Sitemap: https://esteticamcma.com.ar/sitemap.xml
