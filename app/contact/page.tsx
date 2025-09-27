@@ -3,24 +3,24 @@ import Contact from '../../components/Contact'
 
 export const metadata: Metadata = {
     title: 'Contacto - Estética MCMA Villa Ballester | Consulta Gratuita',
-    description: 'Contacta con Estética MCMA en Villa Ballester, Buenos Aires. Consulta gratuita, horarios de atención, ubicación y reserva tu cita. Especialistas en medicina estética y tratamientos de belleza.',
+    description: 'Contactá con Estética MCMA en Villa Ballester, Buenos Aires. Consulta gratuita, horarios de atención, ubicación y reservá tu cita. Especialistas en medicina estética y tratamientos de belleza.',
     keywords: [
         'contacto estética MCMA Villa Ballester',
         'consulta gratuita estética Villa Ballester',
-        'reserva cita estética Buenos Aires',
+        'reservá cita estética Buenos Aires',
         'horarios estética MCMA Villa Ballester',
         'ubicación centro estético Villa Ballester',
         'teléfono estética MCMA',
         'WhatsApp estética Villa Ballester',
         'dirección estética MCMA Villa Ballester',
-        'agendar consulta estética',
+        'agendá consulta estética',
         'información tratamientos estéticos',
         'especialistas estéticos Villa Ballester',
         'centro de belleza Villa Ballester contacto'
     ],
     openGraph: {
         title: 'Contacto - Estética MCMA Villa Ballester | Consulta Gratuita',
-        description: 'Contacta con Estética MCMA en Villa Ballester, Buenos Aires. Consulta gratuita, horarios de atención y reserva tu cita.',
+        description: 'Contactá con Estética MCMA en Villa Ballester, Buenos Aires. Consulta gratuita, horarios de atención y reservá tu cita.',
         url: 'https://esteticamcma.com.ar/contact',
         siteName: 'Estética MCMA',
         images: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'Contacto - Estética MCMA Villa Ballester | Consulta Gratuita',
-        description: 'Contacta con Estética MCMA en Villa Ballester, Buenos Aires. Consulta gratuita, horarios de atención y reserva tu cita.',
+        description: 'Contactá con Estética MCMA en Villa Ballester, Buenos Aires. Consulta gratuita, horarios de atención y reservá tu cita.',
         images: ['/images/logo/Logo.webp'],
     },
     alternates: {
@@ -57,7 +57,7 @@ export default function ContactPage() {
                         </span>
                     </h1>
                     <p className="text-xl text-gray-600 text-center mt-4 max-w-2xl mx-auto">
-                        Estamos aquí para ayudarte. Contáctanos para cualquier consulta sobre nuestros tratamientos.
+                        Estamos acá para ayudarte. Contactanos para cualquier consulta sobre nuestros tratamientos.
                     </p>
                 </div>
             </div>

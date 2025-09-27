@@ -47,7 +47,7 @@ export const serviceCategories: ServiceCategory[] = [
             {
                 name: 'Plasma Rico en Plaquetas (PRP)',
                 duration: '60 min',
-                description: 'Tratamiento regenerativo con plasma autólogo para rejuvenecimiento facial',
+                description: 'Tratamiento con plasma autólogo para rejuvenecimiento facial',
                 popular: true
             },
             {
@@ -60,12 +60,12 @@ export const serviceCategories: ServiceCategory[] = [
     {
         title: 'Tratamientos Capilares',
         icon: Sparkles,
-        description: 'Soluciones especializadas para la salud y belleza del cabello',
+        description: 'Soluciones para detener la caída del cabello',
         services: [
             {
                 name: 'PRP Capilar',
                 duration: '60 min',
-                description: 'Tratamiento regenerativo para fortalecer el cabello y estimular su crecimiento'
+                description: 'Tratamiento para fortalecer el cabello y estimular su crecimiento'
             },
             {
                 name: 'Mesoterapia Capilar',
@@ -87,7 +87,7 @@ export const serviceCategories: ServiceCategory[] = [
             {
                 name: 'Mesoterapia Corporal',
                 duration: '60 min',
-                description: 'Reducción de grasa localizada, celulitis y tonificación muscular'
+                description: 'Tratamiento de celulitis corporal mejorando la apariencia de la piel'
             }
         ]
     }

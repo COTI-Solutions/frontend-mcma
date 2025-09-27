@@ -160,10 +160,10 @@ const Services = () => {
                         </div>
                     </div>
                     <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                        ¿Interesada en cirugías plásticas?
+                        ¿Interesado en cirugías plásticas?
                     </h3>
                     <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Nuestras cirujanas especialistas te asesorarán sobre el tratamiento más adecuado para ti.
+                        Nuestras cirujanas especialistas te van a asesorar sobre el tratamiento más adecuado para vos.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a

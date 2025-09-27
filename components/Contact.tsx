@@ -118,7 +118,7 @@ const Contact = () => {
                                         Envíanos un Mensaje
                                     </h3>
                                     <p className="text-gray-600">
-                                        Estamos aquí para ayudarte con cualquier consulta
+                                        Estamos acá para ayudarte con cualquier consulta
                                     </p>
                                 </div>
 
@@ -197,7 +197,7 @@ const Contact = () => {
                                                 onChange={handleInputChange}
                                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm hover:bg-white"
                                             >
-                                                <option value="">Selecciona un servicio</option>
+                                                <option value="">Seleccioná un servicio</option>
                                                 {services.map((service) => (
                                                     <option key={service} value={service}>
                                                         {service}
@@ -320,7 +320,7 @@ const Contact = () => {
 
                             <div className="relative z-10">
                                 <h4 className="text-2xl font-bold mb-4">
-                                    ¿Necesitas ayuda inmediata?
+                                    ¿Necesitás ayuda inmediata?
                                 </h4>
                                 <p className="text-primary-100 mb-6 text-lg">
                                     Para consultas urgentes, contactanos directamente por WhatsApp

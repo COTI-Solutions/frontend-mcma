@@ -245,7 +245,7 @@ const Footer = () => {
                             ¿Lista para transformar tu belleza?
                         </h3>
                         <p className="text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                            Agenda tu consulta gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos de belleza con tratamientos personalizados
+                            Agendá tu consulta gratuita y descubrí cómo podemos ayudarte a alcanzar tus objetivos de belleza con tratamientos personalizados
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
                             <button
