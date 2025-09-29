@@ -14,6 +14,7 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
 Disallow: /_next/
+Allow: /_next/static/
 Disallow: /node_modules/
 Crawl-delay: 1
 
@@ -30,6 +31,7 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
 Disallow: /_next/
+Allow: /_next/static/
 Disallow: /node_modules/
 
 # Reglas específicas para Bingbot
@@ -45,6 +47,7 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /*.json$
 Disallow: /_next/
+Allow: /_next/static/
 Disallow: /node_modules/
 
 # Bloquear bots maliciosos
