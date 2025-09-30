@@ -72,7 +72,7 @@ const nextConfig = {
         return [
             {
                 source: '/servicios',
-                destination: '/#services',
+                destination: '/',
                 permanent: true,
             },
             {
@@ -82,17 +82,17 @@ const nextConfig = {
             },
             {
                 source: '/sobre-nosotros',
-                destination: '/#about',
+                destination: '/',
                 permanent: true,
             },
             {
                 source: '/reservar',
-                destination: '/#booking',
+                destination: '/',
                 permanent: true,
             },
             {
                 source: '/preguntas-frecuentes',
-                destination: '/#faq',
+                destination: '/',
                 permanent: true,
             }
         ]
@@ -103,11 +103,11 @@ const nextConfig = {
         return [
             {
                 source: '/tratamientos/:path*',
-                destination: '/#services',
+                destination: '/',
             },
             {
                 source: '/estetica/:path*',
-                destination: '/#services',
+                destination: '/',
             }
         ]
     },
