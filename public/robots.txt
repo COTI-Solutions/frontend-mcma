@@ -7,61 +7,10 @@ Allow: /
 Allow: /images/
 Allow: /favicon/
 Allow: /contact
-Allow: /sitemap.xml
-Allow: /_next/static/
 Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
 Disallow: /*.json$
 Disallow: /_next/
 Allow: /_next/static/
-Disallow: /node_modules/
-Crawl-delay: 1
-
-# Reglas específicas para Googlebot
-User-agent: Googlebot
-Allow: /
-Allow: /images/
-Allow: /favicon/
-Allow: /contact
-Allow: /sitemap.xml
-Allow: /_next/static/
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-Disallow: /_next/
-Allow: /_next/static/
-Disallow: /node_modules/
-
-# Reglas específicas para Bingbot
-User-agent: Bingbot
-Allow: /
-Allow: /images/
-Allow: /favicon/
-Allow: /contact
-Allow: /sitemap.xml
-Allow: /_next/static/
-Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-Disallow: /_next/
-Allow: /_next/static/
-Disallow: /node_modules/
-
-# Bloquear bots maliciosos
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
 
 # Sitemap
 Sitemap: https://esteticamcma.com.ar/sitemap.xml
