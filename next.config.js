@@ -94,6 +94,12 @@ const nextConfig = {
                 source: '/preguntas-frecuentes',
                 destination: '/',
                 permanent: true,
+            },
+            // Redirecciones adicionales para evitar conflictos
+            {
+                source: '/sitemap.xml',
+                destination: '/sitemap.xml',
+                permanent: false,
             }
         ]
     },

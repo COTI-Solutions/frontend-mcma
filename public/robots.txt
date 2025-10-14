@@ -4,13 +4,25 @@
 # Reglas generales para todos los bots
 User-agent: *
 Allow: /
+Allow: /contact
 Allow: /images/
 Allow: /favicon/
-Allow: /contact
+
+# Bloquear contenido no relevante
 Disallow: /api/
 Disallow: /*.json$
 Disallow: /_next/
 Allow: /_next/static/
 
-# Sitemap
+# Configuración específica para Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /contact
+Allow: /images/
+Allow: /favicon/
+Disallow: /api/
+Disallow: /_next/
+Allow: /_next/static/
+
+# Sitemap (usar HTTPS)
 Sitemap: https://esteticamcma.com.ar/sitemap.xml
