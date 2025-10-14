@@ -227,13 +227,21 @@ export default function RootLayout({
                     `}
                 </Script>
 
-                {/* Favicons and App Icons */}
-                <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+                {/* Favicons and App Icons - Optimizado para Google */}
+                <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
                 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-                <link rel="shortcut icon" href="/favicon/favicon.ico" />
+                <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+                <link rel="apple-touch-icon" sizes="192x192" href="/favicon/web-app-manifest-192x192.png" />
+                <link rel="apple-touch-icon" sizes="512x512" href="/favicon/web-app-manifest-512x512.png" />
                 <meta name="apple-mobile-web-app-title" content="MCMA" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
+
+                {/* Meta tags adicionales para favicon */}
+                <meta name="msapplication-TileImage" content="/favicon/web-app-manifest-192x192.png" />
+                <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
 
                 {/* SEO Meta Tags Adicionales */}
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
