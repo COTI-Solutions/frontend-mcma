@@ -124,13 +124,13 @@ const Breadcrumbs = () => {
                         {breadcrumbs.map((item, index) => (
                             <li key={item.href} className="flex items-center">
                                 {index > 0 && (
-                                    <ChevronRight className="w-4 h-4 text-gray-400 mx-2 flex-shrink-0" />
+                                    <ChevronRight className="w-4 h-4 text-secondary-500/60 mx-2 flex-shrink-0" />
                                 )}
 
                                 {item.isCurrent ? (
                                     // Elemento actual (no clickeable)
                                     <span
-                                        className="text-gray-900 font-medium"
+                                        className="text-text-main font-semibold"
                                         aria-current="page"
                                     >
                                         {item.label}
@@ -139,7 +139,7 @@ const Breadcrumbs = () => {
                                     // Elementos navegables
                                     <Link
                                         href={item.href}
-                                        className={`flex items-center space-x-1 hover:text-primary-600 transition-colors duration-200 ${index === 0 ? 'text-primary-600' : 'text-gray-600'
+                                        className={`flex items-center space-x-1 hover:text-primary-500 transition-colors duration-200 ${index === 0 ? 'text-primary-500 font-medium' : 'text-text-muted'
                                             }`}
                                     >
                                         {index === 0 && <Home className="w-4 h-4" />}

@@ -134,13 +134,13 @@ const Contact = () => {
                         {item.icon}
                     </div>
                     <div>
-                        <Title level={5} className="!mb-1 !font-display !text-gray-900">
+                        <Title level={5} className="!mb-1 !font-display !text-primary-500">
                             {item.title}
                         </Title>
-                        <Text strong className="block text-gray-800">
+                        <Text strong className="block text-text-main">
                             {item.content}
                         </Text>
-                        <Paragraph type="secondary" className="!mb-0 !mt-1 text-sm">
+                        <Paragraph className="!mb-0 !mt-1 text-sm !text-text-muted">
                             {item.description}
                         </Paragraph>
                     </div>
@@ -186,29 +186,23 @@ const Contact = () => {
                     <Space direction="vertical" size={12} className="max-w-3xl">
                         <Title
                             level={1}
-                            className="!mb-0 !font-display !text-4xl md:!text-5xl"
+                            className="!mb-0 !font-display !text-4xl md:!text-5xl !text-primary-500"
                         >
-                            <span className="bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">
-                                Contacto
-                            </span>
+                            Contacto
                         </Title>
-                        <Paragraph className="!mb-0 !text-lg !text-gray-600">
-                            Estamos para acompañarte en cada paso. Escribinos, llamanos o visitanos en Villa Ballester.
+                        <Paragraph className="!mb-0 !text-[15px] md:!text-base !text-text-main !leading-relaxed">
+                            Estamos para acompañarte en cada paso de tu valoración estética. Escribinos, llamanos o visitanos en nuestro centro en Villa Ballester.
                         </Paragraph>
-                        <Space wrap>
-                            <Badge color="#848058" text="Consulta gratuita" />
-                            <Badge color="#6A2226" text="Atención personalizada" />
+                        <Space wrap size={[8, 8]}>
+                            <span className="badge-clinical">Quirófano Habilitado</span>
+                            <span className="badge-clinical">Matrícula Nacional</span>
+                            <span className="badge-clinical">Consulta de Valoración</span>
                         </Space>
                     </Space>
                 </div>
             </section>
 
-            <section className="section-padding relative overflow-hidden bg-gradient-to-br from-background to-background-light">
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                    <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-secondary-100 opacity-40 blur-3xl" />
-                    <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-primary-100 opacity-40 blur-3xl" />
-                </div>
-
+            <section className="section-padding relative overflow-hidden bg-background">
                 <div className="container-custom relative z-10">
                     <motion.div
                         initial={false}
@@ -228,13 +222,13 @@ const Contact = () => {
                                 transition={{ duration: 0.6 }}
                                 viewport={{ once: true }}
                             >
-                                <Card className="border-none shadow-lg" title={null}>
+                                <Card className="border border-surface-soft shadow-md bg-surface" title={null}>
                                     <Space direction="vertical" size={8} className="mb-6 w-full">
-                                        <Title level={3} className="!mb-0 !font-display">
+                                        <Title level={3} className="!mb-0 !font-display !text-primary-500">
                                             Envianos un mensaje
                                         </Title>
-                                        <Paragraph type="secondary" className="!mb-0">
-                                            Completá el formulario y te derivamos a WhatsApp con tu consulta lista para enviar.
+                                        <Paragraph className="!mb-0 !text-text-muted text-[15px]">
+                                            Completá el formulario y te derivamos a WhatsApp con tu consulta médica lista para enviar.
                                         </Paragraph>
                                     </Space>
 
@@ -259,41 +253,42 @@ const Contact = () => {
                                             <Col xs={24} md={12}>
                                                 <Form.Item
                                                     name="name"
-                                                    label="Nombre completo"
+                                                    label={<span className="text-text-main font-medium">Nombre completo</span>}
                                                     rules={[
                                                         { required: true, message: 'Ingresá tu nombre' },
                                                         { min: 2, message: 'Mínimo 2 caracteres' },
                                                     ]}
                                                 >
-                                                    <Input placeholder="Tu nombre" />
+                                                    <Input placeholder="Tu nombre" className="!rounded-lg" />
                                                 </Form.Item>
                                             </Col>
                                             <Col xs={24} md={12}>
                                                 <Form.Item
                                                     name="email"
-                                                    label="Email"
+                                                    label={<span className="text-text-main font-medium">Email</span>}
                                                     rules={[
                                                         { required: true, message: 'Ingresá tu email' },
                                                         { type: 'email', message: 'Email inválido' },
                                                     ]}
                                                 >
-                                                    <Input placeholder="tu@email.com" />
+                                                    <Input placeholder="tu@email.com" className="!rounded-lg" />
                                                 </Form.Item>
                                             </Col>
                                         </Row>
 
                                         <Row gutter={16}>
                                             <Col xs={24} md={12}>
-                                                <Form.Item name="phone" label="Teléfono">
-                                                    <Input placeholder="+54 11 3701 7756" />
+                                                <Form.Item name="phone" label={<span className="text-text-main font-medium">Teléfono</span>}>
+                                                    <Input placeholder="+54 11 3701 7756" className="!rounded-lg" />
                                                 </Form.Item>
                                             </Col>
                                             <Col xs={24} md={12}>
-                                                <Form.Item name="service" label="Servicio de interés">
+                                                <Form.Item name="service" label={<span className="text-text-main font-medium">Procedimiento o servicio</span>}>
                                                     <Select
                                                         allowClear
-                                                        placeholder="Seleccioná un servicio"
+                                                        placeholder="Seleccioná un tratamiento"
                                                         options={serviceOptions}
+                                                        className="!rounded-lg"
                                                     />
                                                 </Form.Item>
                                             </Col>
@@ -301,7 +296,7 @@ const Contact = () => {
 
                                         <Form.Item
                                             name="message"
-                                            label="Mensaje"
+                                            label={<span className="text-text-main font-medium">Consulta</span>}
                                             rules={[
                                                 { required: true, message: 'Contanos tu consulta' },
                                                 { min: 10, message: 'Mínimo 10 caracteres' },
@@ -312,6 +307,7 @@ const Contact = () => {
                                                 placeholder="Contanos qué tratamiento te interesa o qué dudas tenés..."
                                                 showCount
                                                 maxLength={500}
+                                                className="!rounded-lg"
                                             />
                                         </Form.Item>
 
@@ -322,12 +318,12 @@ const Contact = () => {
                                                 icon={<SendOutlined />}
                                                 block
                                                 size="large"
-                                                className="!h-12"
+                                                className="!h-12 !bg-primary-500 hover:!bg-primary-600 !font-semibold !rounded-lg shadow-md"
                                             >
-                                                Enviar por WhatsApp
+                                                Agendar consulta de valoración
                                             </Button>
-                                            <Text type="secondary" className="text-center text-sm">
-                                                Al enviar, se abrirá WhatsApp con tu mensaje prearmado.
+                                            <Text className="text-center text-xs text-text-muted">
+                                                Al enviar, se abrirá WhatsApp con tu consulta prearmada para atención inmediata.
                                             </Text>
                                         </Space>
                                     </Form>
@@ -344,11 +340,11 @@ const Contact = () => {
                             >
                                 <Space direction="vertical" size={24} className="w-full">
                                     <div>
-                                        <Title level={4} className="!mb-2 !font-display">
-                                            Datos de contacto
+                                        <Title level={4} className="!mb-1 !font-display !text-primary-500">
+                                            Canales de atención
                                         </Title>
-                                        <Paragraph type="secondary" className="!mb-0">
-                                            Elegí el canal que prefieras para comunicarte con nosotros.
+                                        <Paragraph className="!mb-0 !text-text-muted text-[15px]">
+                                            Elegí la vía de contacto más conveniente para coordinar tu cita.
                                         </Paragraph>
                                     </div>
 
@@ -359,12 +355,12 @@ const Contact = () => {
                                     </Space>
 
                                     <Card
-                                        className="overflow-hidden border-none p-0"
+                                        className="overflow-hidden border border-surface-soft shadow-md bg-surface"
                                         styles={{ body: { padding: 0 } }}
                                         title={
-                                            <div className="bg-gradient-to-r from-primary-600 to-secondary-500 px-4 py-3 text-center">
+                                            <div className="bg-secondary-500 px-4 py-3 text-center">
                                                 <Text className="!text-white !font-semibold">
-                                                    Nuestra ubicación
+                                                    Ubicación de nuestro consultorio
                                                 </Text>
                                             </div>
                                         }
@@ -383,14 +379,15 @@ const Contact = () => {
                                         </div>
                                     </Card>
 
-                                    <Badge.Ribbon text="Atención inmediata" color="#6A2226">
-                                        <Card className="border-none bg-gradient-to-br from-primary-600 to-secondary-500 text-center text-white">
-                                            <Space direction="vertical" size={16} className="w-full py-2">
-                                                <Title level={4} className="!mb-0 !font-display !text-white">
+                                    {/* Banner full borgoña de alto impacto */}
+                                    <Badge.Ribbon text="Atención Inmediata" color="#848058">
+                                        <Card className="border-none !bg-primary-500 text-center text-white shadow-xl rounded-xl">
+                                            <Space direction="vertical" size={16} className="w-full py-3">
+                                                <Title level={4} className="!mb-0 !font-display !text-background">
                                                     ¿Preferís WhatsApp?
                                                 </Title>
-                                                <Paragraph className="!mb-0 !text-white/90">
-                                                    Resolvemos tus dudas en el momento con atención personalizada.
+                                                <Paragraph className="!mb-0 !text-surface-soft/90 text-[15px] leading-relaxed">
+                                                    Resolvemos tus dudas en el momento con atención personalizada y confidencial.
                                                 </Paragraph>
                                                 <Button
                                                     type="default"
@@ -398,9 +395,9 @@ const Contact = () => {
                                                     icon={<WhatsAppOutlined />}
                                                     href={WHATSAPP_URL}
                                                     target="_blank"
-                                                    className="!inline-flex !h-12 !items-center !border-none !bg-white !px-8 !font-semibold !text-primary-600 hover:!bg-background hover:!text-primary-700"
+                                                    className="!inline-flex !h-12 !items-center !border-none !bg-secondary-500 hover:!bg-secondary-600 !px-8 !font-semibold !text-white shadow-md !rounded-lg"
                                                 >
-                                                    Escribinos ahora
+                                                    Escribinos por WhatsApp
                                                 </Button>
                                             </Space>
                                         </Card>
@@ -410,20 +407,20 @@ const Contact = () => {
                         </Col>
                     </Row>
 
-                    <Divider className="!my-16" />
+                    <Divider className="!my-16 !border-secondary-500/20" />
 
                     <Row gutter={[24, 24]} justify="center">
                         {[
-                            { label: 'Primera consulta', value: 'Sin cargo' },
-                            { label: 'Tiempo de respuesta', value: '24 hs' },
-                            { label: 'Modalidad', value: 'Presencial' },
+                            { label: 'Primera consulta', value: 'Valoración Profesional' },
+                            { label: 'Tiempo de respuesta', value: 'Menos de 24 hs' },
+                            { label: 'Modalidad', value: 'Presencial y Segura' },
                         ].map((item) => (
                             <Col xs={24} sm={8} key={item.label}>
-                                <Card className="border-none text-center">
-                                    <Text type="secondary" className="block text-sm uppercase tracking-wide">
+                                <Card className="border border-surface-soft shadow-sm bg-surface text-center rounded-xl">
+                                    <Text className="block text-xs uppercase tracking-wider text-secondary-600 font-semibold">
                                         {item.label}
                                     </Text>
-                                    <Title level={4} className="!mb-0 !mt-2 !font-display !text-secondary-600">
+                                    <Title level={4} className="!mb-0 !mt-2 !font-display !text-primary-500">
                                         {item.value}
                                     </Title>
                                 </Card>

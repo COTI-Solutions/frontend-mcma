@@ -10,10 +10,22 @@ module.exports = {
             colors: {
                 background: {
                     DEFAULT: '#F4E1D5',
-                    light: '#FAF0EA',
+                    light: '#FAF2ED',
+                    soft: '#FAF2ED',
                     dark: '#E8D0C0',
                 },
+                surface: {
+                    DEFAULT: '#FFFFFF',
+                    soft: '#FAF2ED',
+                },
+                text: {
+                    main: '#2B1810',
+                    muted: '#6B5B52',
+                },
+                'text-main': '#2B1810',
+                'text-muted': '#6B5B52',
                 primary: {
+                    DEFAULT: '#6A2226',
                     50: '#FAF4F4',
                     100: '#F2E4E5',
                     200: '#E5C9CB',
@@ -26,6 +38,7 @@ module.exports = {
                     900: '#320F12',
                 },
                 secondary: {
+                    DEFAULT: '#848058',
                     50: '#F5F4F0',
                     100: '#EBE9E1',
                     200: '#D7D4C4',
@@ -53,6 +66,7 @@ module.exports = {
             fontFamily: {
                 sans: ['var(--font-work-sans)', 'system-ui', 'sans-serif'],
                 serif: ['var(--font-libre-baskerville)', 'Georgia', 'serif'],
+                heading: ['var(--font-libre-baskerville)', 'Georgia', 'serif'],
                 display: ['var(--font-libre-baskerville)', 'Georgia', 'serif'],
                 body: ['var(--font-work-sans)', 'system-ui', 'sans-serif'],
                 ui: ['var(--font-work-sans)', 'system-ui', 'sans-serif'],

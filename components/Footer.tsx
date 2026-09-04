@@ -106,8 +106,8 @@ const Footer = () => {
     return (
         <footer className="bg-primary-900 text-white">
             {/* Main Footer Content */}
-            <div className="container-custom py-8 md:py-16 px-4 md:px-0">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+            <div className="container-custom py-10 md:py-16 px-4 md:px-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10">
                     {/* Company Info */}
                     <motion.div
                         initial={false}
@@ -120,18 +120,17 @@ const Footer = () => {
                             <img
                                 src="/images/logo/LogoDRAMacarenaCovian.png"
                                 alt="Dra. Macarena Covián - Cirugía Plástica y Medicina Estética"
-                                className="h-14 w-auto object-contain"
+                                className="h-14 w-auto object-contain bg-white/90 p-1.5 rounded-lg"
                             />
                         </div>
 
-                        <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">
-                            Centro de estética profesional con más de 5 años de experiencia en Villa Ballester.
-                            Especialistas en tratamientos faciales, corporales y medicina estética.
-                            Tecnología de vanguardia y resultados garantizados.
+                        <p className="text-surface-soft/90 mb-6 leading-relaxed text-[15px]">
+                            Centro de medicina estética y cirugía plástica con más de 5 años de experiencia en Villa Ballester.
+                            Especialistas en tratamientos faciales, corporales y procedimientos quirúrgicos de excelencia.
                         </p>
 
                         {/* Contact Info */}
-                        <div className="space-y-2 md:space-y-3 mb-6">
+                        <div className="space-y-3 mb-6">
                             {contactInfo.map((info, index) => (
                                 info.isLink ? (
                                     <motion.a
@@ -143,10 +142,10 @@ const Footer = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
                                         viewport={{ once: true }}
-                                        className="flex items-start space-x-3 text-gray-300 hover:text-secondary-400 transition-colors duration-200"
+                                        className="flex items-start space-x-3 text-surface-soft/80 hover:text-secondary-300 transition-colors duration-200"
                                     >
-                                        <info.icon className="w-4 h-4 text-secondary-400 flex-shrink-0 mt-0.5" />
-                                        <span className="text-sm md:text-base leading-relaxed">{info.text}</span>
+                                        <info.icon className="w-4 h-4 text-secondary-400 flex-shrink-0 mt-1" />
+                                        <span className="text-[15px] leading-relaxed">{info.text}</span>
                                     </motion.a>
                                 ) : (
                                     <motion.div
@@ -155,17 +154,17 @@ const Footer = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
                                         viewport={{ once: true }}
-                                        className="flex items-start space-x-3 text-gray-300"
+                                        className="flex items-start space-x-3 text-surface-soft/80"
                                     >
-                                        <info.icon className="w-4 h-4 text-secondary-400 flex-shrink-0 mt-0.5" />
-                                        <span className="text-sm md:text-base leading-relaxed">{info.text}</span>
+                                        <info.icon className="w-4 h-4 text-secondary-400 flex-shrink-0 mt-1" />
+                                        <span className="text-[15px] leading-relaxed">{info.text}</span>
                                     </motion.div>
                                 )
                             ))}
                         </div>
 
                         {/* Social Links */}
-                        <div className="flex space-x-4">
+                        <div className="flex space-x-3">
                             {socialLinks.map((social, index) => (
                                 <motion.a
                                     key={social.label}
@@ -176,10 +175,10 @@ const Footer = () => {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     viewport={{ once: true }}
-                                    className="w-10 h-10 bg-gray-800 hover:bg-secondary-500 rounded-full flex items-center justify-center transition-colors duration-200 group"
+                                    className="w-10 h-10 bg-primary-800 hover:bg-secondary-500 rounded-lg flex items-center justify-center transition-colors duration-200 group border border-primary-700"
                                     aria-label={social.label}
                                 >
-                                    <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-200" />
+                                    <social.icon className="w-5 h-5 text-surface-soft group-hover:text-white transition-colors duration-200" />
                                 </motion.a>
                             ))}
                         </div>
@@ -194,12 +193,12 @@ const Footer = () => {
                             transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
                             viewport={{ once: true }}
                         >
-                            <h3 className="text-lg font-semibold mb-4 capitalize">
+                            <h3 className="font-heading text-lg font-bold mb-4 capitalize text-background">
                                 {category === 'servicios' ? 'Servicios' :
-                                    category === 'empresa' ? 'Empresa' :
+                                    category === 'empresa' ? 'Institucional' :
                                         category === 'contacto' ? 'Contacto' : 'Legal'}
                             </h3>
-                            <ul className="space-y-2">
+                            <ul className="space-y-2.5">
                                 {links.map((link, linkIndex) => (
                                     <motion.li
                                         key={link.name}
@@ -210,7 +209,7 @@ const Footer = () => {
                                     >
                                         <button
                                             onClick={link.action}
-                                            className="text-gray-300 hover:text-secondary-400 transition-colors duration-200 text-sm text-left w-full bg-transparent border-none cursor-pointer"
+                                            className="text-surface-soft/80 hover:text-secondary-300 transition-colors duration-200 text-[15px] text-left w-full bg-transparent border-none cursor-pointer"
                                         >
                                             {link.name}
                                         </button>
@@ -222,37 +221,37 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* CTA Section */}
+            {/* CTA Section - Banner Full Borgoña de Alto Impacto */}
             <motion.div
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="border-t border-gray-800 py-8 md:py-12"
+                className="border-t border-primary-800 bg-primary-950/40 py-10 md:py-14"
             >
                 <div className="container-custom">
                     <div className="text-center px-4 md:px-0">
                         <div className="flex justify-center mb-4 md:mb-6">
-                            <div className="flex space-x-2">
-                                <Heart className="w-5 h-5 md:w-6 md:h-6 text-primary-500" />
-                                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-secondary-500" />
-                                <Syringe className="w-5 h-5 md:w-6 md:h-6 text-primary-500" />
-                                <Droplets className="w-5 h-5 md:w-6 md:h-6 text-secondary-500" />
+                            <div className="flex space-x-3">
+                                <Heart className="w-5 h-5 md:w-6 md:h-6 text-primary-400" />
+                                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-secondary-400" />
+                                <Syringe className="w-5 h-5 md:w-6 md:h-6 text-primary-400" />
+                                <Droplets className="w-5 h-5 md:w-6 md:h-6 text-secondary-400" />
                             </div>
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-                            ¿Lista para transformar tu belleza?
+                        <h3 className="font-heading text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-background">
+                            ¿Lista para tu consulta de valoración?
                         </h3>
-                        <p className="text-gray-300 mb-6 md:mb-8 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                            Agendá tu consulta gratuita y descubrí cómo podemos ayudarte a alcanzar tus objetivos de belleza con tratamientos personalizados
+                        <p className="text-surface-soft/90 mb-8 max-w-2xl mx-auto text-[15px] leading-relaxed">
+                            Agendá tu evaluación personalizada con nuestras profesionales médicas y planificá tu tratamiento en un entorno seguro.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button
                                 onClick={() => scrollToSection('#booking')}
-                                className="inline-flex items-center justify-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 md:px-8 py-3 md:py-3 rounded-lg font-medium transition-colors duration-200 text-sm md:text-base"
+                                className="btn-primary text-base px-8 py-3.5 shadow-lg"
                             >
-                                <MessageCircle className="w-4 h-4" />
-                                <span>Agendar Consulta</span>
+                                <MessageCircle className="w-5 h-5" />
+                                <span>Agendar consulta de valoración</span>
                             </button>
                         </div>
                     </div>
@@ -260,29 +259,29 @@ const Footer = () => {
             </motion.div>
 
             {/* Bottom Footer */}
-            <div className="border-t border-gray-800 py-4 md:py-6">
+            <div className="border-t border-primary-800/80 py-6">
                 <div className="container-custom px-4 md:px-0">
-                    <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                        <div className="text-gray-400 text-xs md:text-sm mb-3 md:mb-0">
+                    <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4">
+                        <div className="text-surface-soft/70 text-xs md:text-sm">
                             © {currentYear} Estética MCMA. Todos los derechos reservados.
                         </div>
 
-                        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs md:text-sm text-gray-400">
+                        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs md:text-sm text-surface-soft/70">
                             <button
                                 onClick={() => window.location.href = '/privacy'}
-                                className="hover:text-secondary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                                className="hover:text-secondary-300 transition-colors duration-200 bg-transparent border-none cursor-pointer"
                             >
                                 Política de Privacidad
                             </button>
                             <button
                                 onClick={() => window.location.href = '/terms'}
-                                className="hover:text-secondary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                                className="hover:text-secondary-300 transition-colors duration-200 bg-transparent border-none cursor-pointer"
                             >
                                 Términos de Uso
                             </button>
                             <button
                                 onClick={() => window.location.href = '/cookies'}
-                                className="hover:text-secondary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                                className="hover:text-secondary-300 transition-colors duration-200 bg-transparent border-none cursor-pointer"
                             >
                                 Cookies
                             </button>
@@ -290,8 +289,8 @@ const Footer = () => {
                     </div>
 
                     {/* Developer Credit */}
-                    <div className="flex flex-col items-center justify-center mt-4 pt-4 border-t border-gray-800">
-                        <div className="flex items-center space-x-2 text-gray-400 text-xs md:text-sm mb-3 md:mb-0">
+                    <div className="flex flex-col items-center justify-center mt-4 pt-4 border-t border-primary-800/40">
+                        <div className="flex items-center space-x-2 text-surface-soft/70 text-xs md:text-sm">
                             <span className="transition-colors duration-200">Desarrollado por</span>
                             <a
                                 href="https://cotisolutions.com.ar"
@@ -302,7 +301,7 @@ const Footer = () => {
                                 <img
                                     src="/images/logo/Coti_Solutions.webp"
                                     alt="Coti Solutions Logo"
-                                    className="h-6 w-auto transition-all duration-200"
+                                    className="h-6 w-auto transition-all duration-200 opacity-90 hover:opacity-100"
                                 />
                             </a>
                         </div>
@@ -317,10 +316,10 @@ const Footer = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="fixed bottom-4 md:bottom-8 right-4 md:right-8 w-10 h-10 md:w-12 md:h-12 bg-primary-600 hover:bg-primary-700 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 z-40 group"
+                className="fixed bottom-4 md:bottom-8 right-4 md:right-8 w-11 h-11 bg-primary-500 hover:bg-primary-600 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 z-40 group"
                 aria-label="Volver arriba"
             >
-                <ArrowUp className="w-5 h-5 md:w-6 md:h-6 group-hover:-translate-y-1 transition-transform duration-200" />
+                <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </motion.button>
         </footer>
     )

@@ -32,7 +32,7 @@ const About = () => {
     return (
         <section
             id="about"
-            className="section-padding bg-background-light"
+            className="section-padding bg-surface-soft"
             aria-labelledby="about-title"
         >
             <div className="container-custom">
@@ -40,45 +40,40 @@ const About = () => {
                     <div>
                         <h2
                             id="about-title"
-                            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+                            className="text-4xl md:text-5xl font-heading font-bold text-primary-500 mb-6"
                         >
-                            Sobre
-                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
-                                Estética MCMA
-                            </span>
+                            Sobre Estética MCMA
                         </h2>
 
-                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                            Somos un centro de estética comprometido con tu belleza y bienestar.
-                            Desde 2019, hemos estado ayudando a nuestros pacientes a sentirse más
-                            seguros y radiantes con tratamientos personalizados y tecnología de
-                            vanguardia.
+                        <p className="text-[15px] md:text-base text-text-main mb-6 leading-relaxed">
+                            Somos un centro de estética y medicina médica comprometido con tu belleza y bienestar.
+                            Desde 2019, acompañamos a nuestros pacientes a sentirse más seguros y radiantes con
+                            tratamientos personalizados y tecnología de vanguardia.
                         </p>
 
-                        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                            Nuestro equipo de profesionales certificados combina experiencia,
-                            innovación y atención personalizada para ofrecerte los mejores
-                            resultados en cada visita.
+                        <p className="text-[15px] md:text-base text-text-main mb-8 leading-relaxed">
+                            Nuestro equipo médico y profesional certificado combina experiencia clínica, innovación y
+                            atención personalizada para ofrecerte los mejores resultados en un entorno seguro y confiable.
                         </p>
 
                         <div className="grid grid-cols-2 gap-6">
-                            <div className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-white/60">
+                            <div className="text-center p-5 bg-surface rounded-xl shadow-sm border border-surface-soft">
                                 <AnimatedStat
                                     value={5}
                                     suffix="+"
                                     label="Años de Experiencia"
-                                    valueClassName="text-3xl font-bold text-primary-600"
-                                    labelClassName="text-sm text-gray-600"
+                                    valueClassName="text-3xl font-bold text-primary-500"
+                                    labelClassName="text-sm text-text-muted mt-1"
                                     delay={0.1}
                                 />
                             </div>
-                            <div className="text-center p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-white/60">
+                            <div className="text-center p-5 bg-surface rounded-xl shadow-sm border border-surface-soft">
                                 <AnimatedStat
                                     value={1000}
                                     suffix="+"
                                     label="Tratamientos Realizados"
                                     valueClassName="text-3xl font-bold text-secondary-500"
-                                    labelClassName="text-sm text-gray-600"
+                                    labelClassName="text-sm text-text-muted mt-1"
                                     delay={0.2}
                                     duration={2500}
                                 />
@@ -91,20 +86,19 @@ const About = () => {
                             <img
                                 src="/images/about/doc.webp"
                                 alt="Equipo profesional de Estética MCMA en Villa Ballester"
-                                className="w-full h-96 object-cover rounded-2xl shadow-2xl"
+                                className="w-full h-96 object-cover rounded-2xl shadow-xl"
                             />
                         </div>
-                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-full opacity-20 -z-10" />
-                        <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-accent-400 to-primary-400 rounded-full opacity-20 -z-10" />
+                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-secondary-500/20 rounded-full opacity-30 -z-10" />
+                        <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary-500/20 rounded-full opacity-30 -z-10" />
                     </div>
                 </div>
 
                 <div className="mt-20">
                     <div className="text-center mb-16">
-                        <h3 className="text-3xl font-bold text-gray-900 mb-4">Nuestros Valores</h3>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Nos guiamos por principios que garantizan la excelencia en cada
-                            tratamiento
+                        <h3 className="text-2xl md:text-3xl font-heading font-bold text-primary-500 mb-3">Nuestros Valores</h3>
+                        <p className="text-[15px] md:text-base text-text-muted max-w-2xl mx-auto leading-relaxed">
+                            Nos guiamos por principios que garantizan la excelencia médica y estética en cada tratamiento.
                         </p>
                     </div>
 
@@ -116,15 +110,15 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.08 }}
                                 viewport={{ once: true }}
-                                className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                                className="text-center p-6 bg-surface rounded-xl shadow-md border border-surface-soft hover:shadow-xl transition-shadow duration-300"
                             >
-                                <div className="w-16 h-16 bg-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4 ring-4 ring-secondary-200">
+                                <div className="w-16 h-16 bg-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4 ring-4 ring-secondary-500/20 shadow-md">
                                     <value.icon className="w-8 h-8 text-white" aria-hidden="true" />
                                 </div>
-                                <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                                <h4 className="text-lg font-heading font-bold text-text-main mb-2">
                                     {value.title}
                                 </h4>
-                                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                                <p className="text-[15px] text-text-main leading-relaxed">{value.description}</p>
                             </motion.article>
                         ))}
                     </div>
