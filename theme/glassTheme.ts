@@ -31,44 +31,45 @@ const useStyles = createStyles(({ css, cssVar }) => {
             textShadow: '0 1px rgba(0,0,0,0.1)',
         }),
         cardRoot: css({
-            ...glassBox,
-            backgroundColor: `color-mix(in srgb, ${cssVar.colorBgContainer} 40%, transparent)`,
+            backgroundColor: '#FFFFFF',
+            borderRadius: 8,
+            boxShadow: '0 4px 12px -2px rgba(43, 24, 16, 0.06), 0 2px 6px -1px rgba(43, 24, 16, 0.04)',
+            border: '1px solid #FAF2ED',
         }),
         badgeRibbon: css({
             '& .ant-ribbon': {
                 fontFamily: 'var(--font-work-sans), system-ui, sans-serif',
                 fontWeight: 600,
                 letterSpacing: '0.02em',
-                boxShadow: [
-                    cssVar.boxShadowSecondary,
-                    'inset 0 0 4px 1px rgba(255, 255, 255, 0.25)',
-                ].join(','),
+                borderRadius: '4px',
             },
         }),
         modalContainer: css({
-            ...glassBox,
+            backgroundColor: '#FFFFFF',
+            borderRadius: 8,
             backdropFilter: 'none',
         }),
         buttonRoot: css({
-            ...glassBorder,
+            borderRadius: 8,
         }),
         buttonRootDefaultColor: css({
             background: 'transparent',
             color: cssVar.colorText,
 
             '&:hover': {
-                background: 'rgba(255,255,255,0.2)',
-                color: `color-mix(in srgb, ${cssVar.colorText} 90%, transparent)`,
+                background: '#FAF2ED',
+                color: cssVar.colorPrimary,
             },
 
             '&:active': {
-                background: 'rgba(255,255,255,0.1)',
-                color: `color-mix(in srgb, ${cssVar.colorText} 80%, transparent)`,
+                background: '#F4E1D5',
+                color: cssVar.colorPrimary,
             },
         }),
         dropdownRoot: css({
-            ...glassBox,
-            borderRadius: cssVar.borderRadiusLG,
+            backgroundColor: '#FFFFFF',
+            borderRadius: 8,
+            boxShadow: '0 10px 25px -5px rgba(43, 24, 16, 0.1)',
 
             ul: {
                 background: 'transparent',
@@ -90,27 +91,26 @@ const useStyles = createStyles(({ css, cssVar }) => {
         }),
         radioButtonRoot: css({
             '&.ant-radio-button-wrapper': {
-                ...glassBorder,
                 background: 'transparent',
-                borderColor: 'rgba(255, 255, 255, 0.2)',
+                borderColor: '#FAF2ED',
                 color: cssVar.colorText,
 
                 '&:hover': {
-                    borderColor: 'rgba(255, 255, 255, 0.24)',
-                    color: cssVar.colorText,
+                    borderColor: '#848058',
+                    color: '#848058',
                 },
 
                 '&.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)': {
-                    ...glassBox,
-                    borderColor: 'rgba(255, 255, 255, 0.28)',
-                    color: cssVar.colorText,
+                    backgroundColor: '#FAF2ED',
+                    borderColor: '#6A2226',
+                    color: '#6A2226',
 
                     '&::before': {
-                        backgroundColor: 'rgba(255, 255, 255, 0.18)',
+                        backgroundColor: '#6A2226',
                     },
 
                     '&:hover': {
-                        color: cssVar.colorText,
+                        color: '#6A2226',
                     },
                 },
             },
@@ -131,16 +131,16 @@ const useGlassTheme = () => {
                     colorSuccess: '#848058',
                     colorLink: '#848058',
                     colorLinkHover: '#72704C',
-                    colorBgBase: '#F4E1D5',
-                    colorBgContainer: '#F4E1D5',
+                    colorBgBase: '#FAF2ED',
+                    colorBgContainer: '#FFFFFF',
                     colorBgLayout: '#F4E1D5',
-                    colorText: '#320F12',
-                    colorTextSecondary: '#4E5034',
+                    colorText: '#2B1810',
+                    colorTextSecondary: '#6B5B52',
                     fontFamily: 'var(--font-work-sans), system-ui, sans-serif',
-                    borderRadius: 12,
-                    borderRadiusLG: 12,
-                    borderRadiusSM: 12,
-                    borderRadiusXS: 12,
+                    borderRadius: 8,
+                    borderRadiusLG: 8,
+                    borderRadiusSM: 6,
+                    borderRadiusXS: 4,
                     motionDurationSlow: '0.2s',
                     motionDurationMid: '0.1s',
                     motionDurationFast: '0.05s',

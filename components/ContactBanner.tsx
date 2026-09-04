@@ -12,13 +12,13 @@ const ContactBanner = () => {
             viewport={{ once: true }}
         >
             <Card
-                className="overflow-hidden border-none shadow-lg"
+                className="overflow-hidden border border-surface-soft shadow-md rounded-xl"
                 styles={{ body: { padding: 0 } }}
                 cover={
                     <img
                         src="/images/about/portada.webp"
                         alt="Dra. Macarena Covián - Cirugía Plástica y Medicina Estética"
-                        className="h-48 w-full object-contain object-center bg-gradient-to-r from-primary-50 to-secondary-50 sm:h-56 md:h-64 lg:h-72"
+                        className="h-48 w-full object-contain object-center bg-surface-soft sm:h-56 md:h-64 lg:h-72"
                     />
                 }
             />

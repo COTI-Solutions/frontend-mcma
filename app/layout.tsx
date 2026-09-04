@@ -283,11 +283,11 @@ export default function RootLayout({
                 <link rel="dns-prefetch" href="//www.google-analytics.com" />
                 <link rel="dns-prefetch" href="//www.googletagmanager.com" />
             </head>
-            <body className={`${workSans.className} antialiased overflow-x-hidden bg-background`}>
+            <body className={`${workSans.className} antialiased overflow-x-hidden bg-background text-text-main`}>
                 <AntdProvider>
                     <a
                         href="#contenido-principal"
-                        className="sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:m-0 focus:block focus:h-auto focus:w-auto focus:overflow-visible focus:rounded-lg focus:bg-primary-600 focus:px-4 focus:py-2 focus:text-white focus:[clip:auto]"
+                        className="sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:m-0 focus:block focus:h-auto focus:w-auto focus:overflow-visible focus:rounded-lg focus:bg-primary-500 focus:px-4 focus:py-2 focus:text-white focus:[clip:auto]"
                     >
                         Saltar al contenido principal
                     </a>
@@ -296,9 +296,9 @@ export default function RootLayout({
                     <StaticSiteContent />
                     <Footer />
                     <noscript>
-                        <div className="container-custom py-8 text-center text-sm text-gray-700 border-t border-background-dark bg-background">
+                        <div className="container-custom py-8 text-center text-sm text-text-muted border-t border-secondary-500/20 bg-background">
                             Este sitio funciona sin JavaScript. Consultá también{' '}
-                            <a href="/llms.txt" className="text-primary-600 underline">
+                            <a href="/llms.txt" className="text-primary-500 underline font-semibold">
                                 /llms.txt
                             </a>{' '}
                             para un resumen del negocio orientado a agentes de IA.

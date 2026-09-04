@@ -47,12 +47,12 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                        <a href="/#booking" className="btn-primary text-lg px-8 py-4">
-                            Reservar Cita
+                        <a href="/#booking" className="btn-primary text-base md:text-lg px-8 py-4">
+                            Agendar consulta de valoración
                         </a>
                         <a
                             href="/#services"
-                            className="btn-outline text-lg px-8 py-4 border-white text-white hover:bg-secondary-500 hover:border-secondary-500"
+                            className="btn-outline text-base md:text-lg px-8 py-4 !border-white !text-white hover:!bg-secondary-500 hover:!border-secondary-500"
                         >
                             Ver Tratamientos
                         </a>

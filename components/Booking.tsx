@@ -32,7 +32,7 @@ const Booking = () => {
     }
 
     return (
-        <section id="booking" className="section-padding relative overflow-hidden">
+        <section id="booking" className="section-padding relative overflow-hidden bg-background">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -40,7 +40,7 @@ const Booking = () => {
                     alt="Recepción Estética MCMA"
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-50/40 to-secondary-50/40"></div>
+                <div className="absolute inset-0 bg-background/85 backdrop-blur-[2px]"></div>
             </div>
 
             {/* Content with relative positioning */}
@@ -54,21 +54,18 @@ const Booking = () => {
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                                Agenda tu
-                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
-                                    Cita por WhatsApp
-                                </span>
+                            <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary-500 mb-6">
+                                Agendá tu Cita por WhatsApp
                             </h2>
 
-                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                Seleccioná el tratamiento que te interesa y consultá directamente por WhatsApp.
-                                Te responderemos rápidamente con la disponibilidad y toda la información que necesites.
+                            <p className="text-[15px] md:text-base text-text-main mb-8 leading-relaxed">
+                                Seleccioná el tratamiento de tu interés y consultá directamente con nuestro equipo.
+                                Te responderemos a la brevedad con la disponibilidad de turnos y asesoramiento personalizado.
                             </p>
 
                             {/* Benefits */}
                             <div className="mb-8">
-                                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                                <h3 className="text-xl font-heading font-bold text-primary-500 mb-4">
                                     ¿Por qué consultar por WhatsApp?
                                 </h3>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -79,8 +76,8 @@ const Booking = () => {
                                         viewport={{ once: true }}
                                         className="flex items-center space-x-2"
                                     >
-                                        <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                        <span className="text-gray-700">Respuesta inmediata</span>
+                                        <CheckCircle className="w-5 h-5 text-secondary-500 flex-shrink-0" />
+                                        <span className="text-[15px] text-text-main">Respuesta inmediata</span>
                                     </motion.div>
                                     <motion.div
                                         initial={false}
@@ -89,8 +86,8 @@ const Booking = () => {
                                         viewport={{ once: true }}
                                         className="flex items-center space-x-2"
                                     >
-                                        <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                        <span className="text-gray-700">Consulta de disponibilidad</span>
+                                        <CheckCircle className="w-5 h-5 text-secondary-500 flex-shrink-0" />
+                                        <span className="text-[15px] text-text-main">Consulta de disponibilidad</span>
                                     </motion.div>
                                     <motion.div
                                         initial={false}
@@ -99,8 +96,8 @@ const Booking = () => {
                                         viewport={{ once: true }}
                                         className="flex items-center space-x-2"
                                     >
-                                        <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                        <span className="text-gray-700">Información personalizada</span>
+                                        <CheckCircle className="w-5 h-5 text-secondary-500 flex-shrink-0" />
+                                        <span className="text-[15px] text-text-main">Información personalizada</span>
                                     </motion.div>
                                     <motion.div
                                         initial={false}
@@ -109,15 +106,15 @@ const Booking = () => {
                                         viewport={{ once: true }}
                                         className="flex items-center space-x-2"
                                     >
-                                        <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0" />
-                                        <span className="text-gray-700">Reserva directa</span>
+                                        <CheckCircle className="w-5 h-5 text-secondary-500 flex-shrink-0" />
+                                        <span className="text-[15px] text-text-main">Reserva directa</span>
                                     </motion.div>
                                 </div>
                             </div>
 
                             {/* Contact Info */}
-                            <div className="bg-white/50 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/40">
-                                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                            <div className="bg-surface rounded-xl p-6 shadow-md border border-surface-soft">
+                                <h3 className="text-xl font-heading font-bold text-primary-500 mb-4">
                                     Información de Contacto
                                 </h3>
                                 <div className="space-y-3">
@@ -132,10 +129,10 @@ const Booking = () => {
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                                 viewport={{ once: true }}
-                                                className="flex items-center space-x-3 text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                                                className="flex items-center space-x-3 text-text-main hover:text-primary-500 transition-colors duration-200"
                                             >
-                                                <info.icon className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                                                <span>{info.text}</span>
+                                                <info.icon className="w-5 h-5 text-secondary-500 flex-shrink-0" />
+                                                <span className="text-[15px]">{info.text}</span>
                                             </motion.a>
                                         ) : (
                                             <motion.div
@@ -144,10 +141,10 @@ const Booking = () => {
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                                 viewport={{ once: true }}
-                                                className="flex items-center space-x-3 text-gray-600"
+                                                className="flex items-center space-x-3 text-text-main"
                                             >
-                                                <info.icon className="w-5 h-5 text-primary-500 flex-shrink-0" />
-                                                <span>{info.text}</span>
+                                                <info.icon className="w-5 h-5 text-secondary-500 flex-shrink-0" />
+                                                <span className="text-[15px]">{info.text}</span>
                                             </motion.div>
                                         )
                                     ))}
@@ -155,14 +152,13 @@ const Booking = () => {
                             </div>
 
                             {/* Additional Info */}
-                            <div className="mt-6 p-4 bg-accent-50/80 backdrop-blur-sm rounded-lg border border-accent-200/60">
-                                <h4 className="font-semibold text-accent-800 mb-2">
-                                    💡 Consejo
+                            <div className="mt-6 p-4 bg-surface rounded-lg border border-secondary-500/20">
+                                <h4 className="font-semibold text-secondary-600 mb-1.5 flex items-center gap-1.5">
+                                    <span>💡</span> Consejo Clínico
                                 </h4>
-                                <p className="text-accent-700 text-sm">
-                                    Para obtener los mejores resultados, te recomendamos programar tu cita
-                                    con al menos 24 horas de anticipación. Esto nos permite preparar
-                                    todo para tu tratamiento.
+                                <p className="text-text-muted text-sm leading-relaxed">
+                                    Para una experiencia óptima, te recomendamos programar tu cita de valoración
+                                    con al menos 24 horas de anticipación.
                                 </p>
                             </div>
                         </motion.div>
@@ -173,22 +169,22 @@ const Booking = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
-                            className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-2xl p-6 border border-white/30"
+                            className="bg-surface rounded-2xl shadow-xl p-6 md:p-8 border border-surface-soft"
                         >
                             <div className="text-center mb-6">
-                                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <div className="w-16 h-16 bg-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                                     <MessageCircle className="w-8 h-8 text-white" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                <h3 className="text-2xl font-heading font-bold text-primary-500 mb-2">
                                     Seleccioná tu Tratamiento
                                 </h3>
-                                <p className="text-gray-600">
-                                    Elegí el servicio que te interesa y consultá por WhatsApp
+                                <p className="text-[15px] text-text-muted">
+                                    Elegí el servicio que te interesa y consultá directamente por WhatsApp
                                 </p>
                             </div>
 
                             {/* Service Categories */}
-                            <div className="space-y-6 max-h-96 overflow-y-auto">
+                            <div className="space-y-4 max-h-96 overflow-y-auto pr-1">
                                 {bookingServiceCategories.map((category, categoryIndex) => (
                                     <motion.div
                                         key={category.title}
@@ -196,13 +192,13 @@ const Booking = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                                         viewport={{ once: true }}
-                                        className="border border-white/40 rounded-xl p-4 bg-white/40 backdrop-blur-sm"
+                                        className="border border-surface-soft rounded-xl p-4 bg-surface-soft/60"
                                     >
                                         <div className="flex items-center mb-3">
-                                            <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mr-3">
+                                            <div className="w-8 h-8 bg-secondary-500 rounded-full flex items-center justify-center mr-3 shadow-sm">
                                                 <category.icon className="w-4 h-4 text-white" />
                                             </div>
-                                            <h4 className="text-lg font-semibold text-gray-900">{category.title}</h4>
+                                            <h4 className="text-base font-semibold text-text-main">{category.title}</h4>
                                         </div>
 
                                         <div className="grid gap-2">
@@ -214,18 +210,18 @@ const Booking = () => {
                                                     whileInView={{ opacity: 1, x: 0 }}
                                                     transition={{ duration: 0.4, delay: (categoryIndex * 0.1) + (serviceIndex * 0.05) }}
                                                     viewport={{ once: true }}
-                                                    className="text-left p-3 rounded-lg border border-white/60 hover:border-primary-300/80 hover:bg-primary-50/80 transition-all duration-200 group bg-white/20 backdrop-blur-sm"
+                                                    className="text-left p-3 rounded-lg border border-surface-soft hover:border-primary-500/40 hover:bg-surface bg-surface transition-all duration-200 group shadow-sm"
                                                 >
                                                     <div className="flex justify-between items-start">
                                                         <div>
-                                                            <h5 className="font-medium text-gray-900 group-hover:text-primary-700 transition-colors">
+                                                            <h5 className="font-medium text-sm text-text-main group-hover:text-primary-500 transition-colors">
                                                                 {service.name}
                                                             </h5>
-                                                            <p className="text-sm text-gray-500">
+                                                            <p className="text-xs text-text-muted mt-0.5">
                                                                 {service.duration} • {service.price}
                                                             </p>
                                                         </div>
-                                                        <MessageCircle className="w-4 h-4 text-gray-400 group-hover:text-primary-600 transition-colors" />
+                                                        <MessageCircle className="w-4 h-4 text-secondary-500 group-hover:text-primary-500 transition-colors mt-0.5" />
                                                     </div>
                                                 </motion.button>
                                             ))}
@@ -236,14 +232,14 @@ const Booking = () => {
 
                             {/* Direct WhatsApp Button */}
                             <div className="mt-6 text-center">
-                                <p className="text-sm text-gray-500 mb-3">
+                                <p className="text-sm text-text-muted mb-3">
                                     ¿No encontrás el tratamiento que buscás?
                                 </p>
                                 <a
                                     href="https://wa.me/5491137017756?text=Hola!%20Me%20gustar%C3%ADa%20consultar%20sobre%20otros%20tratamientos%20disponibles."
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+                                    className="btn-primary w-full sm:w-auto"
                                 >
                                     <MessageCircle className="w-4 h-4" />
                                     <span>Consultar Otros Tratamientos</span>
@@ -251,8 +247,8 @@ const Booking = () => {
                             </div>
                         </motion.div>
                     </div>
-                </div> {/* Cierra el div del contenido relativo */}
-            </div> {/* Cierra el div del container-custom */}
+                </div>
+            </div>
         </section>
     )
 }
