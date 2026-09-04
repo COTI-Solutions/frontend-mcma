@@ -49,14 +49,14 @@ const Booking = () => {
                     <div className="grid lg:grid-cols-2 gap-16 items-start">
                         {/* Content */}
                         <motion.div
-                            initial={{ opacity: 0, x: -50 }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
                         >
                             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                                 Agenda tu
-                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600">
+                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
                                     Cita por WhatsApp
                                 </span>
                             </h2>
@@ -73,7 +73,7 @@ const Booking = () => {
                                 </h3>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <motion.div
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.1 }}
                                         viewport={{ once: true }}
@@ -83,7 +83,7 @@ const Booking = () => {
                                         <span className="text-gray-700">Respuesta inmediata</span>
                                     </motion.div>
                                     <motion.div
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.2 }}
                                         viewport={{ once: true }}
@@ -93,7 +93,7 @@ const Booking = () => {
                                         <span className="text-gray-700">Consulta de disponibilidad</span>
                                     </motion.div>
                                     <motion.div
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.3 }}
                                         viewport={{ once: true }}
@@ -103,7 +103,7 @@ const Booking = () => {
                                         <span className="text-gray-700">Información personalizada</span>
                                     </motion.div>
                                     <motion.div
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: 0.4 }}
                                         viewport={{ once: true }}
@@ -128,7 +128,7 @@ const Booking = () => {
                                                 href={info.href}
                                                 target={info.href.startsWith('https://wa.me') ? '_blank' : undefined}
                                                 rel={info.href.startsWith('https://wa.me') ? 'noopener noreferrer' : undefined}
-                                                initial={{ opacity: 0, y: 10 }}
+                                                initial={false}
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                                 viewport={{ once: true }}
@@ -140,7 +140,7 @@ const Booking = () => {
                                         ) : (
                                             <motion.div
                                                 key={info.text}
-                                                initial={{ opacity: 0, y: 10 }}
+                                                initial={false}
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                                 viewport={{ once: true }}
@@ -169,7 +169,7 @@ const Booking = () => {
 
                         {/* Service Selector */}
                         <motion.div
-                            initial={{ opacity: 0, x: 50 }}
+                            initial={false}
                             whileInView={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
@@ -192,7 +192,7 @@ const Booking = () => {
                                 {bookingServiceCategories.map((category, categoryIndex) => (
                                     <motion.div
                                         key={category.title}
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                                         viewport={{ once: true }}
@@ -210,7 +210,7 @@ const Booking = () => {
                                                 <motion.button
                                                     key={service.name}
                                                     onClick={() => handleServiceSelect(service.name)}
-                                                    initial={{ opacity: 0, x: -10 }}
+                                                    initial={false}
                                                     whileInView={{ opacity: 1, x: 0 }}
                                                     transition={{ duration: 0.4, delay: (categoryIndex * 0.1) + (serviceIndex * 0.05) }}
                                                     viewport={{ once: true }}

@@ -1,0 +1,58 @@
+# Estética MCMA / Dra. Macarena Covián
+
+> Centro de cirugía plástica y medicina estética en Villa Ballester, Buenos Aires, Argentina.
+
+## Resumen
+
+Estética MCMA ofrece tratamientos de medicina estética y cirugía plástica con más de 5 años de experiencia.
+Sitio web: https://esteticamcma.com.ar
+Idioma: español (Argentina)
+
+## Contacto
+
+- Teléfono / WhatsApp: +54 11 3701 7756
+- Email: esteticamcma@gmail.com
+- Dirección: 11 de Septiembre 4896, Timbre 3F, Villa Ballester, Buenos Aires, Argentina (CP 1653)
+- Horarios: Lun–Vie 09:00–18:00 · Sáb 09:00–12:00 · Domingo cerrado
+- Página de contacto: https://esteticamcma.com.ar/contact
+
+## Tratamientos
+
+### Tratamientos Inyectables
+- Toxina Botulínica (30-45 min) — Más popular
+- Rellenos con Ácido Hialurónico (45-60 min) — Más popular
+- Bioestimuladores Faciales (60 min)
+
+### Tratamientos Regenerativos
+- Plasma Rico en Plaquetas / PRP (60 min) — Más popular
+- Bioestimuladores Corporales (60-90 min)
+
+### Tratamientos Capilares
+- PRP Capilar (60 min)
+- Mesoterapia Capilar (45 min)
+
+### Mesoterapia Especializada
+- Mesoterapia Facial (45 min)
+- Mesoterapia Corporal (60 min)
+
+## Cirugías plásticas (consulta)
+
+Asesoramiento en rinoplastia, blefaroplastia, lifting facial, liposucción, abdominoplastia y cirugía mamaria.
+
+## Páginas
+
+- / — Inicio (hero, nosotros, tratamientos, reservas, FAQ)
+- /contact — Formulario de contacto, mapa y datos de contacto
+- /llms.txt — Este archivo (orientado a agentes de IA)
+
+## Marca
+
+- Color primario (borgoña): #6A2226
+- Color secundario (verde oliva): #848058
+- Fondo (beige): #F4E1D5
+
+## Notas para agentes
+
+El contenido principal del sitio se renderiza en el HTML del servidor (SSR).
+Existe un bloque semántico `#contenido-estatico` con el resumen del negocio, tratamientos, FAQ y contacto.
+Preferir ese bloque y este archivo frente a depender de JavaScript o de animaciones del cliente.

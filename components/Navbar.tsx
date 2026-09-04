@@ -3,29 +3,25 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Phone, MapPin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
     const [scrollProgress, setScrollProgress] = useState(0)
     const pathname = usePathname()
-    const router = useRouter()
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY
-            const maxScroll = 100 // Máximo scroll para considerar "completamente scrolled"
+            const maxScroll = 100
             const progress = Math.min(scrollY / maxScroll, 1)
 
             setScrollProgress(progress)
-            setScrolled(scrollY > 30)
         }
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    // Efecto para hacer scroll a la sección cuando se carga la página principal con hash
     useEffect(() => {
         if (pathname === '/' && window.location.hash) {
             const sectionId = window.location.hash.substring(1)
@@ -35,39 +31,40 @@ const Navbar = () => {
                     const offsetTop = (element as HTMLElement).offsetTop - 100
                     window.scrollTo({ top: offsetTop, behavior: 'smooth' })
                 }
-            }, 100) // Pequeño delay para asegurar que la página esté cargada
+            }, 100)
         }
     }, [pathname])
 
-    const scrollToSection = (sectionId: string) => {
-        if (sectionId.startsWith('#')) {
-            // Enlace interno
-            if (pathname === '/contact') {
-                // Si estamos en la página de contacto, ir a la página principal con hash
-                router.push('/' + sectionId)
-            } else {
-                // Si estamos en la página principal, hacer scroll con offset
-                const element = document.getElementById(sectionId.substring(1))
-                if (element) {
-                    const offsetTop = (element as HTMLElement).offsetTop - 100
-                    window.scrollTo({ top: offsetTop, behavior: 'smooth' })
-                }
-            }
-        } else {
-            // Enlace a página - navegar
-            router.push(sectionId)
-        }
-        setIsOpen(false)
-    }
-
     const navItems = [
-        { name: 'Inicio', href: '#hero' },
-        { name: 'Nosotros', href: '#about' },
-        { name: 'Servicios', href: '#services' },
-        { name: 'Reservas', href: '#booking' },
-        { name: 'FAQ', href: '#faq' },
+        { name: 'Inicio', href: '/#hero' },
+        { name: 'Nosotros', href: '/#about' },
+        { name: 'Servicios', href: '/#services' },
+        { name: 'Reservas', href: '/#booking' },
+        { name: 'FAQ', href: '/#faq' },
         { name: 'Contacto', href: '/contact' },
     ]
+
+    const handleNavClick = (
+        event: React.MouseEvent<HTMLAnchorElement>,
+        href: string,
+    ) => {
+        if (!href.startsWith('/#')) {
+            setIsOpen(false)
+            return
+        }
+
+        if (pathname === '/') {
+            event.preventDefault()
+            const sectionId = href.substring(2)
+            const element = document.getElementById(sectionId)
+            if (element) {
+                const offsetTop = (element as HTMLElement).offsetTop - 100
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' })
+            }
+        }
+
+        setIsOpen(false)
+    }
 
     return (
         <nav
@@ -82,30 +79,28 @@ const Navbar = () => {
             <div className="w-full px-4 md:px-0 md:container-custom md:mx-auto">
                 <div className="flex items-center justify-between h-16 md:h-20">
                     {/* Logo */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="flex items-center space-x-2 md:space-x-3"
-                    >
-                        <img
-                            src="images/logo/logo.png"
-                            alt="Estética MCMA Logo"
-                            className="w-12 h-12 md:w-16 md:h-16 transition-transform duration-500 ease-out"
-                        />
-                    </motion.div>
+                    <div className="flex items-center space-x-2 md:space-x-3">
+                        <a href="/" aria-label="Ir al inicio - Estética MCMA">
+                            <img
+                                src="/images/logo/LogoDRAMacarenaCovian.png"
+                                alt="Dra. Macarena Covián - Cirugía Plástica y Medicina Estética"
+                                className="h-10 md:h-14 w-auto object-contain transition-transform duration-500 ease-out"
+                            />
+                        </a>
+                    </div>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
                         {navItems.map((item) => (
-                            <button
+                            <a
                                 key={item.name}
-                                onClick={() => scrollToSection(item.href)}
-                                className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-300 ease-out text-sm lg:text-base relative"
+                                href={item.href}
+                                onClick={(event) => handleNavClick(event, item.href)}
+                                className="group text-gray-700 hover:text-secondary-500 font-medium transition-all duration-300 ease-out text-sm lg:text-base relative"
                             >
                                 {item.name}
-                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 ease-out group-hover:w-full"></span>
-                            </button>
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary-500 transition-all duration-300 ease-out group-hover:w-full"></span>
+                            </a>
                         ))}
                     </div>
 
@@ -116,18 +111,18 @@ const Navbar = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`flex items-center space-x-2 text-xs xl:text-sm transition-colors duration-200 ${scrollProgress > 0.1
-                                ? 'text-gray-600 hover:text-primary-600'
-                                : 'text-[#BAEBCC] hover:text-white'
+                                ? 'text-gray-600 hover:text-secondary-500'
+                                : 'text-secondary-300 hover:text-secondary-200'
                                 }`}
                         >
-                            <Phone className={`w-3 h-3 xl:w-4 xl:h-4 transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-gray-600' : 'text-[#BAEBCC]'
+                            <Phone className={`w-3 h-3 xl:w-4 xl:h-4 transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-secondary-500' : 'text-secondary-300'
                                 }`} />
                             <span className="hidden xl:inline">+54 11 3701 7756</span>
                             <span className="xl:hidden">+54 11 3701 7756</span>
                         </a>
-                        <div className={`flex items-center space-x-2 text-xs xl:text-sm transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-gray-600' : 'text-[#BAEBCC]'
+                        <div className={`flex items-center space-x-2 text-xs xl:text-sm transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-gray-600' : 'text-secondary-300'
                             }`}>
-                            <MapPin className={`w-3 h-3 xl:w-4 xl:h-4 transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-gray-600' : 'text-[#BAEBCC]'
+                            <MapPin className={`w-3 h-3 xl:w-4 xl:h-4 transition-colors duration-200 ${scrollProgress > 0.1 ? 'text-secondary-500' : 'text-secondary-300'
                                 }`} />
                             <span className="hidden xl:inline">Buenos Aires, Argentina</span>
                             <span className="xl:hidden">BA, Argentina</span>
@@ -173,17 +168,15 @@ const Navbar = () => {
                             >
                                 <div className="py-6 px-4 space-y-1">
                                     {/* Navigation Items */}
-                                    {navItems.map((item, index) => (
-                                        <motion.button
+                                    {navItems.map((item) => (
+                                        <a
                                             key={item.name}
-                                            initial={{ opacity: 0, x: -20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                                            onClick={() => scrollToSection(item.href)}
-                                            className="block w-full text-left px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all duration-200 font-medium"
+                                            href={item.href}
+                                            onClick={(event) => handleNavClick(event, item.href)}
+                                            className="block w-full text-left px-4 py-3 text-gray-700 hover:text-secondary-600 hover:bg-secondary-50 rounded-lg transition-all duration-200 font-medium"
                                         >
                                             {item.name}
-                                        </motion.button>
+                                        </a>
                                     ))}
 
                                     {/* Contact Section */}
