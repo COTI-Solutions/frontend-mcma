@@ -120,19 +120,9 @@ const nextConfig = {
 
     // Configuración experimental simplificada
     experimental: {
-        optimizeCss: false, // Deshabilitamos para evitar problemas con critters
-    },
-
-    // Configuración de webpack simplificada
-    webpack: (config, { dev, isServer }) => {
-        // Optimización para producción
-        if (!dev && !isServer) {
-            config.optimization.splitChunks.chunks = 'all';
-            config.optimization.minimize = true;
-        }
-
-        return config;
+        optimizeCss: false,
     },
 }
 
 module.exports = nextConfig
+

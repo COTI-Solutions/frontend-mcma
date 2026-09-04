@@ -70,15 +70,18 @@ const Navbar = () => {
 
     return (
         <nav
-            className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-500 ease-out transform-gpu"
+            className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-out transform-gpu border-b"
             data-scrolled={isScrolled}
             style={{
                 backgroundColor: isScrolled
-                    ? `rgba(255, 255, 255, ${pathname === '/' ? 0.2 + scrollProgress * 0.78 : 0.98})`
-                    : 'transparent',
-                backdropFilter: isScrolled ? `blur(${6 + scrollProgress * 6}px)` : 'none',
+                    ? 'rgba(255, 255, 255, 0.96)'
+                    : 'rgba(250, 242, 237, 0.85)',
+                backdropFilter: 'blur(12px)',
+                borderColor: isScrolled
+                    ? 'rgba(132, 128, 88, 0.15)'
+                    : 'rgba(132, 128, 88, 0.08)',
                 boxShadow: isScrolled
-                    ? '0 4px 20px -2px rgba(43, 24, 16, 0.08), 0 2px 6px -1px rgba(43, 24, 16, 0.04)'
+                    ? '0 4px 20px -2px rgba(43, 24, 16, 0.06), 0 2px 6px -1px rgba(43, 24, 16, 0.03)'
                     : 'none',
             }}
         >
@@ -90,9 +93,7 @@ const Navbar = () => {
                             <img
                                 src="/images/logo/LogoDRAMacarenaCovian.png"
                                 alt="Dra. Macarena Covián - Cirugía Plástica y Medicina Estética"
-                                className={`h-10 md:h-14 w-auto object-contain transition-all duration-500 ease-out ${
-                                    !isScrolled ? 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : ''
-                                }`}
+                                className="h-10 md:h-14 w-auto object-contain transition-all duration-300 ease-out"
                             />
                         </a>
                     </div>
@@ -104,16 +105,10 @@ const Navbar = () => {
                                 key={item.name}
                                 href={item.href}
                                 onClick={(event) => handleNavClick(event, item.href)}
-                                className={`group font-medium transition-all duration-300 ease-out text-sm lg:text-base relative ${
-                                    isScrolled
-                                        ? 'text-text-main hover:text-secondary-500'
-                                        : 'text-white hover:text-secondary-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]'
-                                }`}
+                                className="group font-medium transition-all duration-300 ease-out text-sm lg:text-base relative text-text-main hover:text-primary-500 py-1"
                             >
                                 {item.name}
-                                <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 ease-out group-hover:w-full ${
-                                    isScrolled ? 'bg-secondary-500' : 'bg-secondary-300'
-                                }`}></span>
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 ease-out group-hover:w-full bg-primary-500"></span>
                             </a>
                         ))}
                     </div>
@@ -124,26 +119,14 @@ const Navbar = () => {
                             href="https://wa.me/5491137017756?text=Hola%21%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos%20de%20est%C3%A9tica."
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`flex items-center space-x-2 text-xs xl:text-sm transition-colors duration-200 ${
-                                isScrolled
-                                    ? 'text-text-muted hover:text-secondary-500'
-                                    : 'text-white/90 hover:text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]'
-                            }`}
+                            className="flex items-center space-x-2 text-xs xl:text-sm text-text-muted hover:text-primary-500 transition-colors duration-200"
                         >
-                            <Phone className={`w-3.5 h-3.5 transition-colors duration-200 ${
-                                isScrolled ? 'text-secondary-500' : 'text-secondary-300'
-                            }`} />
+                            <Phone className="w-3.5 h-3.5 text-secondary-500 transition-colors duration-200" />
                             <span className="hidden xl:inline">+54 11 3701 7756</span>
                             <span className="xl:hidden">+54 11 3701 7756</span>
                         </a>
-                        <div className={`flex items-center space-x-2 text-xs xl:text-sm transition-colors duration-200 ${
-                            isScrolled
-                                ? 'text-text-muted'
-                                : 'text-white/90 drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]'
-                        }`}>
-                            <MapPin className={`w-3.5 h-3.5 transition-colors duration-200 ${
-                                isScrolled ? 'text-secondary-500' : 'text-secondary-300'
-                            }`} />
+                        <div className="flex items-center space-x-2 text-xs xl:text-sm text-text-muted">
+                            <MapPin className="w-3.5 h-3.5 text-secondary-500 transition-colors duration-200" />
                             <span className="hidden xl:inline">Buenos Aires, Argentina</span>
                             <span className="xl:hidden">BA, Argentina</span>
                         </div>
@@ -152,11 +135,7 @@ const Navbar = () => {
                     {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className={`md:hidden p-2 rounded-lg transition-colors duration-200 ${
-                            isScrolled
-                                ? 'hover:bg-surface-soft bg-surface/40 text-text-main'
-                                : 'hover:bg-white/20 bg-black/20 text-white backdrop-blur-sm'
-                        }`}
+                        className="md:hidden p-2 rounded-lg transition-colors duration-200 hover:bg-surface-soft bg-surface/70 text-text-main border border-secondary-500/20"
                         aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
                     >
                         {isOpen ? (

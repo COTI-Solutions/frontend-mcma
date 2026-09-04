@@ -9,7 +9,7 @@ const StaticSiteContent = () => {
     return (
         <aside
             id="contenido-estatico"
-            className="static-site-content"
+            className="sr-only"
             aria-label="Resumen del sitio para lectores y agentes"
         >
             <div className="container-custom section-padding space-y-10">
