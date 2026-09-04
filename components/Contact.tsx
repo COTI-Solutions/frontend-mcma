@@ -1,345 +1,438 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle } from 'lucide-react'
+import { motion } from 'framer-motion'
+import {
+    Alert,
+    Badge,
+    Breadcrumb,
+    Button,
+    Card,
+    Col,
+    Divider,
+    Form,
+    Input,
+    Row,
+    Select,
+    Space,
+    Typography,
+} from 'antd'
+import type { FormProps } from 'antd'
+import {
+    ClockCircleOutlined,
+    EnvironmentOutlined,
+    MailOutlined,
+    PhoneOutlined,
+    SendOutlined,
+    WhatsAppOutlined,
+} from '@ant-design/icons'
 import ContactBanner from '@/components/ContactBanner'
+import { getAllServices } from '@/config/services'
+
+const { Title, Paragraph, Text } = Typography
+const { TextArea } = Input
+
+type ContactFormValues = {
+    name: string
+    email: string
+    phone?: string
+    service?: string
+    message: string
+}
+
+const WHATSAPP_URL =
+    'https://wa.me/5491137017756?text=Hola%21%20Me%20gustar%C3%ADa%20consultar%20sobre%20tratamientos.'
+const MAPS_URL =
+    'https://maps.google.com/?q=11+de+Septiembre+4896,+Villa+Ballester,+Buenos+Aires'
+
+const serviceOptions = [
+    { value: 'Consulta General', label: 'Consulta General' },
+    ...getAllServices().map((service) => ({
+        value: service.name,
+        label: service.name,
+    })),
+    { value: 'Otros', label: 'Otros' },
+]
+
+const contactCards = [
+    {
+        key: 'phone',
+        ribbon: 'Respuesta rápida',
+        ribbonColor: '#848058',
+        icon: <PhoneOutlined />,
+        iconBg: '#848058',
+        title: 'Teléfono / WhatsApp',
+        content: '+54 11 3701 7756',
+        description: 'Consultá directamente con nuestro equipo',
+        href: WHATSAPP_URL,
+        external: true,
+    },
+    {
+        key: 'email',
+        icon: <MailOutlined />,
+        iconBg: '#6A2226',
+        title: 'Email',
+        content: 'esteticamcma@gmail.com',
+        description: 'Envianos tu consulta por correo',
+        href: 'mailto:esteticamcma@gmail.com',
+        external: false,
+    },
+    {
+        key: 'address',
+        icon: <EnvironmentOutlined />,
+        iconBg: '#848058',
+        title: 'Dirección',
+        content: '11 de Septiembre 4896, Timbre 3F',
+        description: 'Villa Ballester, Buenos Aires',
+        href: MAPS_URL,
+        external: true,
+    },
+    {
+        key: 'hours',
+        icon: <ClockCircleOutlined />,
+        iconBg: '#6A2226',
+        title: 'Horarios',
+        content: 'Lun-Vie: 9:00 - 18:00',
+        description: 'Sáb: 9:00 - 12:00 · Dom: cerrado',
+        href: undefined,
+        external: false,
+    },
+]
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
-    })
+    const [form] = Form.useForm<ContactFormValues>()
     const [isSubmitted, setIsSubmitted] = useState(false)
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
+    const handleFinish: FormProps<ContactFormValues>['onFinish'] = (values) => {
+        const whatsappMessage = encodeURIComponent(
+            `Hola! Soy ${values.name}.\n` +
+                `Email: ${values.email}\n` +
+                `${values.phone ? `Teléfono: ${values.phone}\n` : ''}` +
+                `${values.service ? `Servicio: ${values.service}\n` : ''}` +
+                `Mensaje: ${values.message}`,
+        )
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        // Aquí iría la lógica para enviar el formulario
-        console.log('Form submitted:', formData)
+        window.open(`https://wa.me/5491137017756?text=${whatsappMessage}`, '_blank', 'noopener,noreferrer')
+
         setIsSubmitted(true)
-        setFormData({ name: '', email: '', phone: '', service: '', message: '' })
-
-        // Reset success message after 5 seconds
-        setTimeout(() => setIsSubmitted(false), 5000)
+        form.resetFields()
+        window.setTimeout(() => setIsSubmitted(false), 6000)
     }
 
-    const contactInfo = [
-        {
-            icon: Phone,
-            title: 'Teléfono',
-            content: '+54 11 3701 7756',
-            href: 'https://wa.me/5491137017756?text=Hola%21%20Me%20gustar%C3%ADa%20consultar%20sobre%20tratamientos.',
-            description: 'Consulta directa por WhatsApp',
-            color: 'from-green-500 to-emerald-600'
-        },
-        {
-            icon: Mail,
-            title: 'Email',
-            content: 'esteticamcma@gmail.com',
-            href: 'mailto:esteticamcma@gmail.com',
-            description: 'Envíanos un mensaje detallado',
-            color: 'from-blue-500 to-indigo-600'
-        },
-        {
-            icon: MapPin,
-            title: 'Dirección',
-            content: '11 de Septiembre 4896, Timbre 3F, Villa Ballester',
-            href: '#',
-            description: 'Visítanos en nuestro centro',
-            color: 'from-purple-500 to-pink-600'
-        },
-        {
-            icon: Clock,
-            title: 'Horarios',
-            content: 'Lun-Vie: 9:00-18:00\nSáb: 9:00-12:00',
-            href: '#',
-            description: 'Cerrado los domingos',
-            color: 'from-orange-500 to-red-600'
+    const renderContactCard = (item: (typeof contactCards)[number]) => {
+        const card = (
+            <Card
+                hoverable={Boolean(item.href)}
+                className="h-full border-none"
+                styles={{ body: { padding: 20 } }}
+            >
+                <Space align="start" size={16}>
+                    <div
+                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-lg text-white"
+                        style={{ backgroundColor: item.iconBg }}
+                    >
+                        {item.icon}
+                    </div>
+                    <div>
+                        <Title level={5} className="!mb-1 !font-display !text-gray-900">
+                            {item.title}
+                        </Title>
+                        <Text strong className="block text-gray-800">
+                            {item.content}
+                        </Text>
+                        <Paragraph type="secondary" className="!mb-0 !mt-1 text-sm">
+                            {item.description}
+                        </Paragraph>
+                    </div>
+                </Space>
+            </Card>
+        )
+
+        const wrappedCard = item.ribbon ? (
+            <Badge.Ribbon text={item.ribbon} color={item.ribbonColor}>
+                {card}
+            </Badge.Ribbon>
+        ) : (
+            card
+        )
+
+        if (!item.href) {
+            return wrappedCard
         }
-    ]
 
-    const services = [
-        'Consulta General',
-        'Tratamiento Facial',
-        'Tratamiento Corporal',
-        'Depilación',
-        'Otros'
-    ]
-
-
+        return (
+            <a
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
+                className="block h-full no-underline text-inherit"
+            >
+                {wrappedCard}
+            </a>
+        )
+    }
 
     return (
-        <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full opacity-30 blur-3xl"></div>
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-secondary-100 to-primary-100 rounded-full opacity-30 blur-3xl"></div>
-            </div>
-
-            <div className="container-custom relative z-10">
-                {/* Banner Promocional */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="mb-16"
-                >
-                    <ContactBanner />
-                </motion.div>
-
-
-
-                <div className="grid lg:grid-cols-2 gap-16">
-                    {/* Contact Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
-                        className="order-2 lg:order-1"
-                    >
-                        <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 relative overflow-hidden">
-                            {/* Decorative background */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary-50/30 to-secondary-50/30"></div>
-                            <div className="relative z-10">
-                                <div className="text-center mb-8">
-                                    <h3 className="text-3xl font-bold text-gray-900 mb-3">
-                                        Envíanos un Mensaje
-                                    </h3>
-                                    <p className="text-gray-600">
-                                        Estamos acá para ayudarte con cualquier consulta
-                                    </p>
-                                </div>
-
-                                {isSubmitted && (
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        className="mb-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl"
-                                    >
-                                        <div className="flex items-center space-x-2">
-                                            <CheckCircle className="w-5 h-5 text-green-600" />
-                                            <span className="text-green-800 font-medium">
-                                                ¡Mensaje enviado con éxito! Te responderemos pronto.
-                                            </span>
-                                        </div>
-                                    </motion.div>
-                                )}
-
-                                <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div className="group">
-                                            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-primary-600 transition-colors">
-                                                Nombre completo *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="name"
-                                                name="name"
-                                                value={formData.name}
-                                                onChange={handleInputChange}
-                                                required
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm hover:bg-white"
-                                                placeholder="Tu nombre"
-                                            />
-                                        </div>
-                                        <div className="group">
-                                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-primary-600 transition-colors">
-                                                Email *
-                                            </label>
-                                            <input
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                value={formData.email}
-                                                onChange={handleInputChange}
-                                                required
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm hover:bg-white"
-                                                placeholder="tu@email.com"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div className="group">
-                                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-primary-600 transition-colors">
-                                                Teléfono
-                                            </label>
-                                            <input
-                                                type="tel"
-                                                id="phone"
-                                                name="phone"
-                                                value={formData.phone}
-                                                onChange={handleInputChange}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm hover:bg-white"
-                                                placeholder="+54 11 1234 5678"
-                                            />
-                                        </div>
-                                        <div className="group">
-                                            <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-primary-600 transition-colors">
-                                                Servicio de interés
-                                            </label>
-                                            <select
-                                                id="service"
-                                                name="service"
-                                                value={formData.service}
-                                                onChange={handleInputChange}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm hover:bg-white"
-                                            >
-                                                <option value="">Seleccioná un servicio</option>
-                                                {services.map((service) => (
-                                                    <option key={service} value={service}>
-                                                        {service}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div className="group">
-                                        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2 group-focus-within:text-primary-600 transition-colors">
-                                            Mensaje *
-                                        </label>
-                                        <textarea
-                                            id="message"
-                                            name="message"
-                                            value={formData.message}
-                                            onChange={handleInputChange}
-                                            required
-                                            rows={5}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm hover:bg-white resize-none"
-                                            placeholder="Contanos en qué podemos ayudarte..."
-                                        />
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center space-x-3"
-                                    >
-                                        <Send className="w-6 h-6" />
-                                        <span>Enviar Mensaje</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Contact Information */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
-                        className="space-y-8 order-1 lg:order-2"
-                    >
-                        {/* Contact Cards */}
-                        <div className="grid gap-6">
-                            {contactInfo.map((info, index) => (
-                                <motion.a
-                                    key={info.title}
-                                    href={info.href}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                                    viewport={{ once: true }}
-                                    className="group block"
-                                >
-                                    <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                                        <div className="flex items-start space-x-4">
-                                            <div className={`w-14 h-14 bg-gradient-to-br ${info.color} rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200 shadow-lg`}>
-                                                <info.icon className="w-7 h-7 text-white" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <h4 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                                                    {info.title}
-                                                </h4>
-                                                <p className="text-gray-700 mb-2 whitespace-pre-line font-medium">
-                                                    {info.content}
-                                                </p>
-                                                <p className="text-sm text-gray-500">
-                                                    {info.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </motion.a>
-                            ))}
-                        </div>
-
-                        {/* Google Map */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            viewport={{ once: true }}
-                            className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
+        <>
+            <section className="border-b border-background-dark bg-background pt-24 pb-10">
+                <div className="container-custom px-4 md:px-0">
+                    <Breadcrumb
+                        className="mb-6"
+                        items={[
+                            { title: <a href="/">Inicio</a> },
+                            { title: 'Contacto' },
+                        ]}
+                    />
+                    <Space direction="vertical" size={12} className="max-w-3xl">
+                        <Title
+                            level={1}
+                            className="!mb-0 !font-display !text-4xl md:!text-5xl"
                         >
-                            <div className="p-4 bg-gradient-to-r from-primary-600 to-secondary-600">
-                                <h4 className="text-white font-semibold text-lg text-center">
-                                    📍 Nuestra Ubicación
-                                </h4>
-                            </div>
-                            <div className="h-80">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.891619805164!2d-58.562677699999995!3d-34.5562994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb935aa7fe31f%3A0x7acb9feb0040a07d!2sEst%C3%A9tica%20MCMA!5e0!3m2!1ses-419!2sar!4v1755527060826!5m2!1ses-419!2sar"
-                                    width="100%"
-                                    height="100%"
-                                    style={{ border: 0 }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    title="Ubicación Estética MCMA"
-                                    className="w-full h-full"
-                                />
-                            </div>
-                        </motion.div>
-
-                        {/* CTA Section */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            viewport={{ once: true }}
-                            className="bg-gradient-to-br from-primary-600 to-secondary-600 rounded-2xl p-8 text-center text-white shadow-2xl relative overflow-hidden"
-                        >
-                            {/* Decorative elements */}
-                            <div className="absolute inset-0 bg-black/10"></div>
-                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-                            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-
-                            <div className="relative z-10">
-                                <h4 className="text-2xl font-bold mb-4">
-                                    ¿Necesitás ayuda inmediata?
-                                </h4>
-                                <p className="text-primary-100 mb-6 text-lg">
-                                    Para consultas urgentes, contactanos directamente por WhatsApp
-                                </p>
-                                <a
-                                    href="https://wa.me/5491137017756?text=Hola%21%20Me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20tratamientos%20de%20est%C3%A9tica."
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center space-x-3 bg-white text-primary-600 hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-                                >
-                                    <MessageCircle className="w-6 h-6" />
-                                    <span>Escribinos</span>
-                                </a>
-                            </div>
-                        </motion.div>
-                    </motion.div>
+                            <span className="bg-gradient-to-r from-primary-600 to-secondary-500 bg-clip-text text-transparent">
+                                Contacto
+                            </span>
+                        </Title>
+                        <Paragraph className="!mb-0 !text-lg !text-gray-600">
+                            Estamos para acompañarte en cada paso. Escribinos, llamanos o visitanos en Villa Ballester.
+                        </Paragraph>
+                        <Space wrap>
+                            <Badge color="#848058" text="Consulta gratuita" />
+                            <Badge color="#6A2226" text="Atención personalizada" />
+                        </Space>
+                    </Space>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section className="section-padding relative overflow-hidden bg-gradient-to-br from-background to-background-light">
+                <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div className="absolute -right-40 -top-40 h-80 w-80 rounded-full bg-secondary-100 opacity-40 blur-3xl" />
+                    <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-primary-100 opacity-40 blur-3xl" />
+                </div>
+
+                <div className="container-custom relative z-10">
+                    <motion.div
+                        initial={false}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="mb-12"
+                    >
+                        <ContactBanner />
+                    </motion.div>
+
+                    <Row gutter={[32, 32]}>
+                        <Col xs={24} lg={14}>
+                            <motion.div
+                                initial={false}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.6 }}
+                                viewport={{ once: true }}
+                            >
+                                <Card className="border-none shadow-lg" title={null}>
+                                    <Space direction="vertical" size={8} className="mb-6 w-full">
+                                        <Title level={3} className="!mb-0 !font-display">
+                                            Envianos un mensaje
+                                        </Title>
+                                        <Paragraph type="secondary" className="!mb-0">
+                                            Completá el formulario y te derivamos a WhatsApp con tu consulta lista para enviar.
+                                        </Paragraph>
+                                    </Space>
+
+                                    {isSubmitted && (
+                                        <Alert
+                                            type="success"
+                                            showIcon
+                                            className="mb-6"
+                                            message="Consulta preparada"
+                                            description="Abrimos WhatsApp con tu mensaje. Si no se abrió, podés escribirnos directamente."
+                                        />
+                                    )}
+
+                                    <Form<ContactFormValues>
+                                        form={form}
+                                        layout="vertical"
+                                        requiredMark="optional"
+                                        onFinish={handleFinish}
+                                        size="large"
+                                    >
+                                        <Row gutter={16}>
+                                            <Col xs={24} md={12}>
+                                                <Form.Item
+                                                    name="name"
+                                                    label="Nombre completo"
+                                                    rules={[
+                                                        { required: true, message: 'Ingresá tu nombre' },
+                                                        { min: 2, message: 'Mínimo 2 caracteres' },
+                                                    ]}
+                                                >
+                                                    <Input placeholder="Tu nombre" />
+                                                </Form.Item>
+                                            </Col>
+                                            <Col xs={24} md={12}>
+                                                <Form.Item
+                                                    name="email"
+                                                    label="Email"
+                                                    rules={[
+                                                        { required: true, message: 'Ingresá tu email' },
+                                                        { type: 'email', message: 'Email inválido' },
+                                                    ]}
+                                                >
+                                                    <Input placeholder="tu@email.com" />
+                                                </Form.Item>
+                                            </Col>
+                                        </Row>
+
+                                        <Row gutter={16}>
+                                            <Col xs={24} md={12}>
+                                                <Form.Item name="phone" label="Teléfono">
+                                                    <Input placeholder="+54 11 3701 7756" />
+                                                </Form.Item>
+                                            </Col>
+                                            <Col xs={24} md={12}>
+                                                <Form.Item name="service" label="Servicio de interés">
+                                                    <Select
+                                                        allowClear
+                                                        placeholder="Seleccioná un servicio"
+                                                        options={serviceOptions}
+                                                    />
+                                                </Form.Item>
+                                            </Col>
+                                        </Row>
+
+                                        <Form.Item
+                                            name="message"
+                                            label="Mensaje"
+                                            rules={[
+                                                { required: true, message: 'Contanos tu consulta' },
+                                                { min: 10, message: 'Mínimo 10 caracteres' },
+                                            ]}
+                                        >
+                                            <TextArea
+                                                rows={5}
+                                                placeholder="Contanos qué tratamiento te interesa o qué dudas tenés..."
+                                                showCount
+                                                maxLength={500}
+                                            />
+                                        </Form.Item>
+
+                                        <Space direction="vertical" size={12} className="w-full">
+                                            <Button
+                                                type="primary"
+                                                htmlType="submit"
+                                                icon={<SendOutlined />}
+                                                block
+                                                size="large"
+                                                className="!h-12"
+                                            >
+                                                Enviar por WhatsApp
+                                            </Button>
+                                            <Text type="secondary" className="text-center text-sm">
+                                                Al enviar, se abrirá WhatsApp con tu mensaje prearmado.
+                                            </Text>
+                                        </Space>
+                                    </Form>
+                                </Card>
+                            </motion.div>
+                        </Col>
+
+                        <Col xs={24} lg={10}>
+                            <motion.div
+                                initial={false}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.6 }}
+                                viewport={{ once: true }}
+                            >
+                                <Space direction="vertical" size={24} className="w-full">
+                                    <div>
+                                        <Title level={4} className="!mb-2 !font-display">
+                                            Datos de contacto
+                                        </Title>
+                                        <Paragraph type="secondary" className="!mb-0">
+                                            Elegí el canal que prefieras para comunicarte con nosotros.
+                                        </Paragraph>
+                                    </div>
+
+                                    <Space direction="vertical" size={16} className="w-full">
+                                        {contactCards.map((item) => (
+                                            <div key={item.key}>{renderContactCard(item)}</div>
+                                        ))}
+                                    </Space>
+
+                                    <Card
+                                        className="overflow-hidden border-none p-0"
+                                        styles={{ body: { padding: 0 } }}
+                                        title={
+                                            <div className="bg-gradient-to-r from-primary-600 to-secondary-500 px-4 py-3 text-center">
+                                                <Text className="!text-white !font-semibold">
+                                                    Nuestra ubicación
+                                                </Text>
+                                            </div>
+                                        }
+                                    >
+                                        <div className="h-72 md:h-80">
+                                            <iframe
+                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.891619805164!2d-58.562677699999995!3d-34.5562994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb935aa7fe31f%3A0x7acb9feb0040a07d!2sEst%C3%A9tica%20MCMA!5e0!3m2!1ses-419!2sar!4v1755527060826!5m2!1ses-419!2sar"
+                                                width="100%"
+                                                height="100%"
+                                                style={{ border: 0 }}
+                                                allowFullScreen
+                                                loading="lazy"
+                                                referrerPolicy="no-referrer-when-downgrade"
+                                                title="Ubicación Estética MCMA"
+                                            />
+                                        </div>
+                                    </Card>
+
+                                    <Badge.Ribbon text="Atención inmediata" color="#6A2226">
+                                        <Card className="border-none bg-gradient-to-br from-primary-600 to-secondary-500 text-center text-white">
+                                            <Space direction="vertical" size={16} className="w-full py-2">
+                                                <Title level={4} className="!mb-0 !font-display !text-white">
+                                                    ¿Preferís WhatsApp?
+                                                </Title>
+                                                <Paragraph className="!mb-0 !text-white/90">
+                                                    Resolvemos tus dudas en el momento con atención personalizada.
+                                                </Paragraph>
+                                                <Button
+                                                    type="default"
+                                                    size="large"
+                                                    icon={<WhatsAppOutlined />}
+                                                    href={WHATSAPP_URL}
+                                                    target="_blank"
+                                                    className="!inline-flex !h-12 !items-center !border-none !bg-white !px-8 !font-semibold !text-primary-600 hover:!bg-background hover:!text-primary-700"
+                                                >
+                                                    Escribinos ahora
+                                                </Button>
+                                            </Space>
+                                        </Card>
+                                    </Badge.Ribbon>
+                                </Space>
+                            </motion.div>
+                        </Col>
+                    </Row>
+
+                    <Divider className="!my-16" />
+
+                    <Row gutter={[24, 24]} justify="center">
+                        {[
+                            { label: 'Primera consulta', value: 'Sin cargo' },
+                            { label: 'Tiempo de respuesta', value: '24 hs' },
+                            { label: 'Modalidad', value: 'Presencial' },
+                        ].map((item) => (
+                            <Col xs={24} sm={8} key={item.label}>
+                                <Card className="border-none text-center">
+                                    <Text type="secondary" className="block text-sm uppercase tracking-wide">
+                                        {item.label}
+                                    </Text>
+                                    <Title level={4} className="!mb-0 !mt-2 !font-display !text-secondary-600">
+                                        {item.value}
+                                    </Title>
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
+            </section>
+        </>
     )
 }
 

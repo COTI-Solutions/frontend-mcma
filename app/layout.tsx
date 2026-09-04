@@ -1,8 +1,28 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { Libre_Baskerville, Work_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AntdProvider from '@/components/AntdProvider'
+import StaticSiteContent from '@/components/StaticSiteContent'
+
+const libreBaskerville = Libre_Baskerville({
+    subsets: ['latin'],
+    weight: ['400', '700'],
+    style: ['normal', 'italic'],
+    variable: '--font-libre-baskerville',
+    display: 'swap',
+})
+
+const workSans = Work_Sans({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700'],
+    variable: '--font-work-sans',
+    display: 'swap',
+})
+
+const LOGO_PATH = '/images/logo/LogoDRAMacarenaCovian.png'
 
 export const metadata: Metadata = {
     title: {
@@ -144,7 +164,7 @@ export const metadata: Metadata = {
         siteName: 'Estética MCMA',
         images: [
             {
-                url: '/images/logo/logo1.png',
+                url: LOGO_PATH,
                 width: 1200,
                 height: 630,
                 alt: 'Centro de Estética MCMA - Tratamientos Profesionales en Villa Ballester, Buenos Aires, Argentina',
@@ -155,7 +175,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Estética MCMA - Centro de Estética',
         description: 'Centro de Estética Profesional en Villa Ballester, Buenos Aires. Especialistas en tratamientos faciales, corporales, medicina estética y cirugías plásticas. Más de 5 años de experiencia.',
-        images: ['/images/logo/logo1.png'],
+        images: [LOGO_PATH],
         creator: '@esteticamcma',
     },
     robots: {
@@ -211,8 +231,13 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="es-AR">
+        <html lang="es-AR" className={`no-js ${libreBaskerville.variable} ${workSans.variable}`}>
             <head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `document.documentElement.classList.replace('no-js','js')`,
+                    }}
+                />
                 {/* Google tag (gtag.js) */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=G-C2LNFYWTB4"
@@ -245,8 +270,8 @@ export default function RootLayout({
 
                 {/* SEO Meta Tags Adicionales */}
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="theme-color" content="#BAEBCC" />
-                <meta name="msapplication-TileColor" content="#BAEBCC" />
+                <meta name="theme-color" content="#6A2226" />
+                <meta name="msapplication-TileColor" content="#6A2226" />
                 <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
 
                 {/* Preconnect para performance */}
@@ -258,10 +283,28 @@ export default function RootLayout({
                 <link rel="dns-prefetch" href="//www.google-analytics.com" />
                 <link rel="dns-prefetch" href="//www.googletagmanager.com" />
             </head>
-            <body className="antialiased overflow-x-hidden">
-                <Navbar />
-                {children}
-                <Footer />
+            <body className={`${workSans.className} antialiased overflow-x-hidden bg-background`}>
+                <AntdProvider>
+                    <a
+                        href="#contenido-principal"
+                        className="sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:m-0 focus:block focus:h-auto focus:w-auto focus:overflow-visible focus:rounded-lg focus:bg-primary-600 focus:px-4 focus:py-2 focus:text-white focus:[clip:auto]"
+                    >
+                        Saltar al contenido principal
+                    </a>
+                    <Navbar />
+                    <div id="contenido-principal">{children}</div>
+                    <StaticSiteContent />
+                    <Footer />
+                    <noscript>
+                        <div className="container-custom py-8 text-center text-sm text-gray-700 border-t border-background-dark bg-background">
+                            Este sitio funciona sin JavaScript. Consultá también{' '}
+                            <a href="/llms.txt" className="text-primary-600 underline">
+                                /llms.txt
+                            </a>{' '}
+                            para un resumen del negocio orientado a agentes de IA.
+                        </div>
+                    </noscript>
+                </AntdProvider>
             </body>
         </html>
     )

@@ -1,28 +1,29 @@
 # Robots.txt para Estética MCMA
 # Centro de Belleza Profesional en Villa Ballester, Buenos Aires
 
-# Reglas generales para todos los bots
 User-agent: *
 Allow: /
 Allow: /contact
 Allow: /images/
 Allow: /favicon/
+Allow: /llms.txt
 
-# Bloquear contenido no relevante
 Disallow: /api/
 Disallow: /*.json$
 Disallow: /_next/
 Allow: /_next/static/
 
-# Configuración específica para Googlebot
 User-agent: Googlebot
 Allow: /
 Allow: /contact
 Allow: /images/
 Allow: /favicon/
+Allow: /llms.txt
 Disallow: /api/
 Disallow: /_next/
 Allow: /_next/static/
 
-# Sitemap (usar HTTPS)
+# Resumen para agentes de IA
+# https://esteticamcma.com.ar/llms.txt
+
 Sitemap: https://esteticamcma.com.ar/sitemap.xml

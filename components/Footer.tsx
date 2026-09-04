@@ -104,13 +104,13 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="bg-gray-900 text-white">
+        <footer className="bg-primary-900 text-white">
             {/* Main Footer Content */}
             <div className="container-custom py-8 md:py-16 px-4 md:px-0">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
                     {/* Company Info */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={false}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
@@ -118,11 +118,10 @@ const Footer = () => {
                     >
                         <div className="flex items-center space-x-3 mb-6">
                             <img
-                                src="/images/logo/logo.png"
-                                alt="Estética MCMA Logo"
-                                className="w-12 h-12 object-contain"
+                                src="/images/logo/LogoDRAMacarenaCovian.png"
+                                alt="Dra. Macarena Covián - Cirugía Plástica y Medicina Estética"
+                                className="h-14 w-auto object-contain"
                             />
-                            <span className="text-2xl font-bold">Estética MCMA</span>
                         </div>
 
                         <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">
@@ -140,25 +139,25 @@ const Footer = () => {
                                         href={info.href}
                                         target={info.href.startsWith('http') ? '_blank' : undefined}
                                         rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                        initial={{ opacity: 0, y: 10 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
                                         viewport={{ once: true }}
-                                        className="flex items-start space-x-3 text-gray-300 hover:text-primary-400 transition-colors duration-200"
+                                        className="flex items-start space-x-3 text-gray-300 hover:text-secondary-400 transition-colors duration-200"
                                     >
-                                        <info.icon className="w-4 h-4 text-primary-400 flex-shrink-0 mt-0.5" />
+                                        <info.icon className="w-4 h-4 text-secondary-400 flex-shrink-0 mt-0.5" />
                                         <span className="text-sm md:text-base leading-relaxed">{info.text}</span>
                                     </motion.a>
                                 ) : (
                                     <motion.div
                                         key={info.text}
-                                        initial={{ opacity: 0, y: 10 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         transition={{ duration: 0.5, delay: index * 0.1 }}
                                         viewport={{ once: true }}
                                         className="flex items-start space-x-3 text-gray-300"
                                     >
-                                        <info.icon className="w-4 h-4 text-primary-400 flex-shrink-0 mt-0.5" />
+                                        <info.icon className="w-4 h-4 text-secondary-400 flex-shrink-0 mt-0.5" />
                                         <span className="text-sm md:text-base leading-relaxed">{info.text}</span>
                                     </motion.div>
                                 )
@@ -173,11 +172,11 @@ const Footer = () => {
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    initial={{ opacity: 0, scale: 0 }}
+                                    initial={false}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     viewport={{ once: true }}
-                                    className="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-colors duration-200 group"
+                                    className="w-10 h-10 bg-gray-800 hover:bg-secondary-500 rounded-full flex items-center justify-center transition-colors duration-200 group"
                                     aria-label={social.label}
                                 >
                                     <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-200" />
@@ -190,7 +189,7 @@ const Footer = () => {
                     {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
                         <motion.div
                             key={category}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={false}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
                             viewport={{ once: true }}
@@ -204,14 +203,14 @@ const Footer = () => {
                                 {links.map((link, linkIndex) => (
                                     <motion.li
                                         key={link.name}
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={false}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.5, delay: linkIndex * 0.05 }}
                                         viewport={{ once: true }}
                                     >
                                         <button
                                             onClick={link.action}
-                                            className="text-gray-300 hover:text-primary-400 transition-colors duration-200 text-sm text-left w-full bg-transparent border-none cursor-pointer"
+                                            className="text-gray-300 hover:text-secondary-400 transition-colors duration-200 text-sm text-left w-full bg-transparent border-none cursor-pointer"
                                         >
                                             {link.name}
                                         </button>
@@ -225,7 +224,7 @@ const Footer = () => {
 
             {/* CTA Section */}
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
@@ -271,19 +270,19 @@ const Footer = () => {
                         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs md:text-sm text-gray-400">
                             <button
                                 onClick={() => window.location.href = '/privacy'}
-                                className="hover:text-primary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                                className="hover:text-secondary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
                             >
                                 Política de Privacidad
                             </button>
                             <button
                                 onClick={() => window.location.href = '/terms'}
-                                className="hover:text-primary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                                className="hover:text-secondary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
                             >
                                 Términos de Uso
                             </button>
                             <button
                                 onClick={() => window.location.href = '/cookies'}
-                                className="hover:text-primary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
+                                className="hover:text-secondary-400 transition-colors duration-200 bg-transparent border-none cursor-pointer"
                             >
                                 Cookies
                             </button>
@@ -314,7 +313,7 @@ const Footer = () => {
             {/* Scroll to Top Button */}
             <motion.button
                 onClick={scrollToTop}
-                initial={{ opacity: 0, scale: 0 }}
+                initial={false}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}

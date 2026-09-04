@@ -1,18 +1,22 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Star, Clock, MessageCircle, Sparkles, Shield, Eye } from 'lucide-react'
+import { Clock, Sparkles, Shield, Eye } from 'lucide-react'
 import { serviceCategories } from '@/config/services'
 import { getServiceImage, getServiceFallback } from '@/config/imageMapping'
+import RibbonCard from '@/components/RibbonCard'
+
+const getWhatsAppUrl = (serviceName: string) =>
+    `https://wa.me/5491137017756?text=${encodeURIComponent(
+        `Hola! Me gustaría obtener más información sobre ${serviceName}. ¿Podrían contarme más detalles y precios?`,
+    )}`
 
 const Services = () => {
-
     return (
-        <section id="services" className="section-padding bg-white">
+        <section id="services" className="section-padding bg-background">
             <div className="container-custom">
-                {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={false}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
@@ -20,7 +24,7 @@ const Services = () => {
                 >
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                         Nuestros
-                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600">
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">
                             Tratamientos
                         </span>
                     </h2>
@@ -30,19 +34,18 @@ const Services = () => {
                     </p>
                 </motion.div>
 
-                {/* Service Categories */}
                 <div className="space-y-16">
                     {serviceCategories.map((category, categoryIndex) => (
                         <motion.div
                             key={category.title}
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={false}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
+                            transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
                             viewport={{ once: true }}
                         >
                             <div className="text-center mb-12">
                                 <div className="flex justify-center mb-4">
-                                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center">
+                                    <div className="w-16 h-16 bg-secondary-500 rounded-full flex items-center justify-center">
                                         <category.icon className="w-8 h-8 text-white" />
                                     </div>
                                 </div>
@@ -50,103 +53,83 @@ const Services = () => {
                                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">{category.description}</p>
                             </div>
 
-                            {/* Services Grid with Intercalated Images */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {category.services.map((service, serviceIndex) => (
-                                    <div key={service.name}>
-                                        {/* Service Card */}
-                                        <motion.a
-                                            href={`https://wa.me/5491137017756?text=${encodeURIComponent(`Hola! Me gustaría obtener más información sobre ${service.name}. ¿Podrían contarme más detalles y precios?`)}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            initial={{ opacity: 0, y: 30 }}
+                                {category.services.map((service, serviceIndex) => {
+                                    const imageData = getServiceImage(service.name)
+                                    const fallbackData = getServiceFallback(service.name)
+                                    const FallbackIcon = fallbackData.icon
+
+                                    return (
+                                        <motion.div
+                                            key={service.name}
+                                            initial={false}
                                             whileInView={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.6, delay: serviceIndex * 0.1 }}
+                                            transition={{ duration: 0.5, delay: serviceIndex * 0.05 }}
                                             viewport={{ once: true }}
-                                            className="group bg-gradient-to-br from-white via-gray-50 to-white border-2 border-gray-100 rounded-3xl p-8 hover:shadow-2xl hover:shadow-primary-100/50 transition-all duration-500 hover:transform hover:-translate-y-3 hover:scale-105 relative overflow-hidden cursor-pointer block hover:border-primary-200"
+                                            className="group h-full"
                                         >
-                                            {/* Background Pattern */}
-                                            <div className="absolute inset-0 bg-gradient-to-br from-primary-500/3 via-transparent to-secondary-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                                            {/* Popular Badge */}
-                                            {service.popular && (
-                                                <div className="absolute top-4 right-4 z-30">
-                                                    <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white text-sm font-semibold rounded-full shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                                                        <Star className="w-4 h-4 mr-2" />
-                                                        Más Popular
-                                                    </div>
-                                                </div>
-                                            )}
-
-                                            {/* Service Image */}
-                                            <div className="relative z-10 mb-6">
-                                                <div className="w-full h-48 rounded-2xl overflow-hidden mb-4 group-hover:scale-105 transition-transform duration-300 shadow-lg">
-                                                    {(() => {
-                                                        const imageData = getServiceImage(service.name);
-
-                                                        if (imageData && imageData.src) {
-                                                            return (
-                                                                <img
-                                                                    src={imageData.src}
-                                                                    alt={imageData.alt}
-                                                                    className="w-full h-full object-cover"
-                                                                />
-                                                            );
-                                                        }
-
-                                                        // Fallback elegante con icono temático y gradiente personalizado
-                                                        const fallbackData = getServiceFallback(service.name);
-                                                        const FallbackIcon = fallbackData.icon;
-
-                                                        return (
-                                                            <div className={`w-full h-full bg-gradient-to-br ${fallbackData.color} flex items-center justify-center group-hover:scale-105 transition-transform duration-300`}>
+                                            <RibbonCard
+                                                hoverable
+                                                href={getWhatsAppUrl(service.name)}
+                                                ribbonText={
+                                                    service.popular
+                                                        ? service.ribbonText ?? 'Más Popular'
+                                                        : undefined
+                                                }
+                                                ribbonColor={service.ribbonColor ?? '#6A2226'}
+                                                wrapperClassName="h-full"
+                                                className="shadow-lg hover:shadow-2xl hover:shadow-secondary-200/50 transition-shadow duration-300"
+                                                cover={
+                                                    <div className="h-48 overflow-hidden">
+                                                        {imageData?.src ? (
+                                                            <img
+                                                                src={imageData.src}
+                                                                alt={imageData.alt}
+                                                                className="w-full h-full object-cover"
+                                                            />
+                                                        ) : (
+                                                            <div
+                                                                className={`w-full h-full bg-gradient-to-br ${fallbackData.color} flex items-center justify-center`}
+                                                            >
                                                                 <div className="text-center">
-                                                                    <FallbackIcon className="w-20 h-20 text-white mb-2 group-hover:scale-110 transition-transform duration-300" />
+                                                                    <FallbackIcon className="w-20 h-20 text-white mb-2" />
                                                                     <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
                                                                         <category.icon className="w-8 h-8 text-white" />
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        );
-                                                    })()}
-                                                </div>
-                                                <h4 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-700 transition-colors duration-300">{service.name}</h4>
-                                                <p className="text-gray-600 leading-relaxed text-lg">{service.description}</p>
-                                            </div>
-
-                                            {/* Bottom Section */}
-                                            <div className="relative z-10 flex justify-between items-center pt-6 border-t-2 border-gray-100 group-hover:border-primary-200 transition-colors duration-300">
-                                                <div className="text-sm text-gray-500">
-                                                    <div className="flex items-center bg-gray-100 px-3 py-2 rounded-full group-hover:bg-primary-100 transition-colors duration-300">
-                                                        <Clock className="w-4 h-4 mr-2 text-primary-600" />
-                                                        <span className="font-medium">{service.duration}</span>
+                                                        )}
                                                     </div>
-                                                </div>
-                                                <div className="text-right">
-                                                    <div className="text-sm text-primary-600 font-semibold bg-primary-50 px-4 py-2 rounded-full group-hover:bg-primary-100 group-hover:text-primary-700 transition-all duration-300">
+                                                }
+                                            >
+                                                <h4 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-secondary-600 transition-colors duration-300">
+                                                    {service.name}
+                                                </h4>
+                                                <p className="text-gray-600 leading-relaxed text-lg mb-6">
+                                                    {service.description}
+                                                </p>
+                                                <div className="flex justify-between items-center pt-6 border-t-2 border-secondary-100 group-hover:border-secondary-300 transition-colors duration-300">
+                                                    <div className="flex items-center bg-secondary-50 px-3 py-2 rounded-full group-hover:bg-secondary-100 transition-colors duration-300">
+                                                        <Clock className="w-4 h-4 mr-2 text-secondary-500" />
+                                                        <span className="font-medium text-sm text-secondary-700">
+                                                            {service.duration}
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-sm text-white font-semibold bg-secondary-500 px-4 py-2 rounded-full group-hover:bg-secondary-600 transition-all duration-300">
                                                         Consultar →
-                                                    </div>
+                                                    </span>
                                                 </div>
-                                            </div>
-
-                                            {/* Hover Glow Effect */}
-                                            <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-15"></div>
-
-                                            {/* Corner Accent */}
-                                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-400/20 to-secondary-400/20 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20"></div>
-                                        </motion.a>
-
-
-                                    </div>
-                                ))}
+                                            </RibbonCard>
+                                        </motion.div>
+                                    )
+                                })}
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
-                {/* CTA Section */}
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={false}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}

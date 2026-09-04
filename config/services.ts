@@ -5,6 +5,8 @@ export interface Service {
     duration: string
     description?: string
     popular?: boolean
+    ribbonText?: string
+    ribbonColor?: string
 }
 
 export interface ServiceCategory {
